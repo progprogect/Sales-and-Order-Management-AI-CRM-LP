@@ -158,39 +158,47 @@
     @media (prefers-reduced-motion: reduce) {
       .wizard-hint-dot .ping { animation: none; opacity: 0.45; }
     }
-    @keyframes heroChatIn {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 0.45rem, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-    .hero-chat-scroll .hero-chat-line {
+    html:not(.no-js) .hero-chat-scroll .hero-chat-line {
       opacity: 0;
-      animation: heroChatIn 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      animation-play-state: paused;
+      transform: translate3d(0, 0.5rem, 0);
+      transition: opacity 0.72s cubic-bezier(0.4, 0, 0.2, 1), transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .hero-chat-scroll.is-in-view .hero-chat-line {
-      animation-play-state: running;
+    html:not(.no-js) .hero-chat-scroll .hero-chat-line.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
-    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(1) { animation-delay: 0s; }
-    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(2) { animation-delay: 0.52s; }
-    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(3) { animation-delay: 1.04s; }
-    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(4) { animation-delay: 1.56s; }
+    .hero-chat-typing {
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+    .hero-chat-typing.is-visible {
+      opacity: 1;
+    }
+    @keyframes heroChatDot {
+      0%, 70%, 100% { opacity: 0.35; transform: translateY(0); }
+      35% { opacity: 1; transform: translateY(-2px); }
+    }
+    .hero-chat-dot {
+      animation: heroChatDot 1.15s ease-in-out infinite;
+    }
+    .hero-chat-dot:nth-child(2) { animation-delay: 0.18s; }
+    .hero-chat-dot:nth-child(3) { animation-delay: 0.36s; }
     @media (prefers-reduced-motion: reduce) {
-      .hero-chat-scroll .hero-chat-line {
-        animation: none !important;
+      html:not(.no-js) .hero-chat-scroll .hero-chat-line {
         opacity: 1 !important;
         transform: none !important;
+        transition: none !important;
       }
+      .hero-chat-dot { animation: none !important; opacity: 0.85 !important; }
+      .hero-chat-typing { display: none !important; }
     }
     html.no-js .hero-chat-scroll .hero-chat-line {
       opacity: 1 !important;
-      animation: none !important;
       transform: none !important;
+      transition: none !important;
+    }
+    html.no-js .hero-chat-typing {
+      display: none !important;
     }
   </style>
 </head>
@@ -288,6 +296,13 @@
               <div class="max-w-[min(92%,17rem)] rounded-2xl rounded-tl-sm bg-surface-container-high px-3 py-2.5 text-xs text-on-surface border border-outline-variant/25 shadow-sm">
                 <p class="leading-snug mb-2">Do you have something like this in stock?</p>
                 <img alt="Watch the customer referenced" class="w-full max-w-[9.5rem] max-h-36 rounded-md object-contain bg-white border border-outline-variant/30" decoding="async" height="152" loading="lazy" src="s-l1200.jpg" width="152"/>
+              </div>
+            </div>
+            <div class="hero-chat-typing flex justify-end hidden" id="hero-chat-typing" aria-hidden="true">
+              <div class="max-w-[min(92%,10rem)] rounded-2xl rounded-tr-sm bg-primary-container/90 px-3 py-2.5 flex gap-1.5 items-center shadow-sm">
+                <span class="hero-chat-dot inline-block w-1.5 h-1.5 shrink-0 rounded-full bg-secondary-fixed"></span>
+                <span class="hero-chat-dot inline-block w-1.5 h-1.5 shrink-0 rounded-full bg-secondary-fixed"></span>
+                <span class="hero-chat-dot inline-block w-1.5 h-1.5 shrink-0 rounded-full bg-secondary-fixed"></span>
               </div>
             </div>
             <div class="hero-chat-line flex justify-end">
@@ -1288,20 +1303,76 @@
       }
 
       var heroChat = document.getElementById('hero-chat-scroll');
+      var heroTyping = document.getElementById('hero-chat-typing');
       if (heroChat) {
-        function markHeroChatInView() {
-          heroChat.classList.add('is-in-view');
-        }
-        var heroReduce =
+        var heroReduceMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (heroReduce) {
-          markHeroChatInView();
+        function scrollHeroChatBottom() {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              heroChat.scrollTo({
+                top: heroChat.scrollHeight,
+                behavior: 'smooth',
+              });
+            });
+          });
+        }
+        function runHeroChatSequence() {
+          if (heroChat.getAttribute('data-hero-seq') === '1') return;
+          heroChat.setAttribute('data-hero-seq', '1');
+          var lines = heroChat.querySelectorAll('.hero-chat-line');
+          if (!lines.length) return;
+          if (heroReduceMotion) return;
+          var TYPING_AFTER_MS = 780;
+          var TYPING_DURATION_MS = 1900;
+          var GAP_AFTER_AGENT_MS = 920;
+          var GAP_BEFORE_STATUS_MS = 920;
+          function showLine(i) {
+            if (lines[i]) {
+              lines[i].classList.add('is-visible');
+              scrollHeroChatBottom();
+            }
+          }
+          showLine(0);
+          setTimeout(function () {
+            if (!heroTyping) {
+              showLine(1);
+              setTimeout(function () {
+                showLine(2);
+                setTimeout(function () {
+                  showLine(3);
+                }, GAP_BEFORE_STATUS_MS);
+              }, GAP_AFTER_AGENT_MS);
+              return;
+            }
+            heroTyping.classList.remove('hidden');
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                heroTyping.classList.add('is-visible');
+                scrollHeroChatBottom();
+              });
+            });
+            setTimeout(function () {
+              heroTyping.classList.remove('is-visible');
+              heroTyping.classList.add('hidden');
+              showLine(1);
+              setTimeout(function () {
+                showLine(2);
+                setTimeout(function () {
+                  showLine(3);
+                }, GAP_BEFORE_STATUS_MS);
+              }, GAP_AFTER_AGENT_MS);
+            }, TYPING_DURATION_MS);
+          }, TYPING_AFTER_MS);
+        }
+        if (heroReduceMotion) {
+          /* lines visible via CSS; typing row hidden */
         } else if ('IntersectionObserver' in window) {
           var heroIo = new IntersectionObserver(
             function (entries) {
               entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
-                  markHeroChatInView();
+                  runHeroChatSequence();
                   heroIo.disconnect();
                 }
               });
@@ -1310,7 +1381,7 @@
           );
           heroIo.observe(heroChat);
         } else {
-          markHeroChatInView();
+          runHeroChatSequence();
         }
       }
 
