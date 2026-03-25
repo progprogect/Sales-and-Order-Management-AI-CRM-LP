@@ -99,18 +99,26 @@
       html { scroll-behavior: auto; }
       .animate-bounce, .animate-pulse, .animate-dash { animation: none !important; }
     }
+    .step1-flow-icon {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      color: #5af8fb;
+    }
     .step1-path {
       fill: none;
       stroke: #5af8fb;
       stroke-width: 2.5;
       stroke-linecap: round;
-      stroke-dasharray: 400;
-      stroke-dashoffset: 400;
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
       transition: stroke-dashoffset 1.1s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .step1-path.drawn { stroke-dashoffset: 0; }
     @media (prefers-reduced-motion: reduce) {
       .step1-path { stroke-dashoffset: 0 !important; transition: none; }
+    }
+    #step1-node-chats.step1-chats-active .step1-chats-ring {
+      box-shadow: 0 0 0 2px rgba(90, 248, 251, 0.45), 0 0 20px rgba(90, 248, 251, 0.35);
+      border-color: #7dfcff;
     }
     .wizard-hint-dot .ping {
       animation: wizardPing 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
@@ -337,25 +345,51 @@
           </div>
           <!-- After launch: flow animation -->
           <div class="relative z-10 w-full hidden flex-col items-center" id="step1-flow" aria-live="polite">
-            <p class="text-secondary-fixed text-xs font-bold uppercase tracking-widest mb-4">Traffic → site &amp; social → chats</p>
-            <div class="w-full max-w-[480px] mx-auto">
-              <svg id="step1-flow-svg" class="w-full h-auto" viewBox="0 0 480 200" aria-hidden="true">
-                <!-- Ads → Web / Social -->
-                <path class="step1-path" d="M52 100 Q140 40 178 52" id="step1-path-a"></path>
-                <path class="step1-path" d="M52 100 Q140 160 178 148" id="step1-path-b"></path>
-                <!-- Web / Social → Chat -->
-                <path class="step1-path" d="M218 52 Q320 30 400 96" id="step1-path-c"></path>
-                <path class="step1-path" d="M218 148 Q320 170 400 104" id="step1-path-d"></path>
-                <circle cx="40" cy="100" r="14" fill="#001b3d" stroke="#5af8fb" stroke-width="2"></circle>
-                <circle cx="200" cy="52" r="12" fill="#0a2744" stroke="#5af8fb" stroke-width="2"></circle>
-                <circle cx="200" cy="148" r="12" fill="#0a2744" stroke="#5af8fb" stroke-width="2"></circle>
-                <circle cx="418" cy="100" r="16" fill="#001b3d" stroke="#5af8fb" stroke-width="2" id="step1-chat-glow"></circle>
+            <p class="text-secondary-fixed text-xs font-bold uppercase tracking-widest mb-3 text-center px-2">Ads → website &amp; social → unified chats</p>
+            <div class="w-full max-w-[420px] mx-auto">
+              <svg id="step1-flow-svg" class="w-full h-auto max-h-[min(72vw,320px)] overflow-visible" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Traffic flow: Ads feed Website and Social in parallel, then both merge into Unified chats.">
+                <!-- Funnel: Ads (top) → Site | Social (middle) → Chats (bottom) -->
+                <path class="step1-path" id="step1-path-a" d="M200 78 Q142 108 95 122"></path>
+                <path class="step1-path" id="step1-path-b" d="M200 78 Q258 108 305 122"></path>
+                <path class="step1-path" id="step1-path-c" d="M95 150 Q148 192 200 212"></path>
+                <path class="step1-path" id="step1-path-d" d="M305 150 Q252 192 200 212"></path>
+                <!-- Ads -->
+                <foreignObject x="152" y="8" width="96" height="88" xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="flex h-full w-full flex-col items-center justify-start gap-1 font-body" style="color:#5af8fb">
+                    <div class="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-2 border-[#5af8fb] bg-[#001b3d] shadow-sm">
+                      <span class="material-symbols-outlined text-[26px] leading-none step1-flow-icon">campaign</span>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Ads</span>
+                  </div>
+                </foreignObject>
+                <!-- Website -->
+                <foreignObject x="44" y="108" width="100" height="88" xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="flex h-full w-full flex-col items-center justify-start gap-1 font-body" style="color:#5af8fb">
+                    <div class="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border-2 border-[#5af8fb] bg-[#0a2744] shadow-sm">
+                      <span class="material-symbols-outlined text-[24px] leading-none step1-flow-icon">language</span>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Website</span>
+                  </div>
+                </foreignObject>
+                <!-- Social -->
+                <foreignObject x="256" y="108" width="100" height="88" xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="flex h-full w-full flex-col items-center justify-start gap-1 font-body" style="color:#5af8fb">
+                    <div class="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border-2 border-[#5af8fb] bg-[#0a2744] shadow-sm">
+                      <span class="material-symbols-outlined text-[24px] leading-none step1-flow-icon">share</span>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Social</span>
+                  </div>
+                </foreignObject>
+                <!-- Unified chats -->
+                <foreignObject x="148" y="196" width="104" height="84" xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="flex h-full w-full flex-col items-center justify-start gap-1 font-body" id="step1-node-chats" style="color:#5af8fb">
+                    <div class="step1-chats-ring flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-2 border-[#5af8fb] bg-[#001b3d] shadow-sm transition-shadow duration-300">
+                      <span class="material-symbols-outlined text-[26px] leading-none step1-flow-icon">forum</span>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-center">Unified chats</span>
+                  </div>
+                </foreignObject>
               </svg>
-            </div>
-            <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 sm:gap-x-14 -mt-2 mb-3 px-1 text-[10px] sm:text-xs font-bold text-secondary-fixed uppercase tracking-wider text-center">
-              <span class="flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm shrink-0">language</span> Site</span>
-              <span class="flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm shrink-0">share</span> Social</span>
-              <span class="flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm shrink-0">chat</span> Chats</span>
             </div>
             <p class="text-center text-on-primary-container text-sm max-w-md min-h-[3rem]" id="step1-flow-caption">Visitors land on your site and profiles…</p>
             <div class="mt-4 px-4 py-2 bg-white/10 rounded-lg backdrop-blur-md border border-white/20 hidden" id="step1-ingest">
@@ -707,8 +741,8 @@
           if (cap) {
             cap.textContent = 'Conversations start in chats—every thread in one pipeline.';
           }
-          var cg = document.getElementById('step1-chat-glow');
-          if (cg) cg.setAttribute('stroke-width', '3');
+          var chats = document.getElementById('step1-node-chats');
+          if (chats) chats.classList.add('step1-chats-active');
           if (nextBtn) nextBtn.disabled = false;
         } else {
           idle.classList.remove('hidden');
@@ -727,7 +761,7 @@
         var nextBtn = document.getElementById('next-from-step1');
         var caption = document.getElementById('step1-flow-caption');
         var ingest = document.getElementById('step1-ingest');
-        var chatGlow = document.getElementById('step1-chat-glow');
+        var chatsNode = document.getElementById('step1-node-chats');
         var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         state.adsLaunched = true;
         if (idle) idle.classList.add('hidden');
@@ -744,7 +778,7 @@
           if (caption) {
             caption.textContent = 'Traffic hits your site and social—then chats light up in one inbox.';
           }
-          if (chatGlow) chatGlow.setAttribute('stroke-width', '3');
+          if (chatsNode) chatsNode.classList.add('step1-chats-active');
           if (ingest) ingest.classList.remove('hidden');
           if (nextBtn) nextBtn.disabled = false;
           return;
@@ -768,7 +802,7 @@
           if (caption) {
             caption.textContent = 'Conversations start in chats—every thread in one pipeline.';
           }
-          if (chatGlow) chatGlow.setAttribute('stroke-width', '3');
+          if (chatsNode) chatsNode.classList.add('step1-chats-active');
         }, 2100);
         setTimeout(function () {
           if (ingest) ingest.classList.remove('hidden');
