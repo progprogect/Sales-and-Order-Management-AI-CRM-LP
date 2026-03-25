@@ -735,10 +735,22 @@
           <input class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"/>
         </div>
         <div>
+          <label class="block text-sm font-bold text-primary-container mb-1" for="reg-contact">Phone or chat link <span class="text-on-surface-variant font-normal">(optional)</span></label>
+          <input class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-contact" name="contact" type="text" autocomplete="off" inputmode="text" placeholder="+1 … or https://t.me/…"/>
+          <p class="text-xs text-outline mt-1">We may use this for a quick follow-up—WhatsApp, Telegram link, or phone.</p>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-primary-container mb-1" for="reg-friday">Friday session <span class="text-error font-normal">*</span></label>
+          <select class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-friday" name="session_date" required aria-describedby="reg-friday-hint">
+            <option value="">Choose a Friday in 2026…</option>
+          </select>
+          <p class="text-xs text-outline mt-1" id="reg-friday-hint">12:00 PM (EST). Past dates are not available.</p>
+        </div>
+        <div>
           <label class="block text-sm font-bold text-primary-container mb-1" for="reg-note">What should we cover? (optional)</label>
           <textarea class="w-full rounded-md border-outline-variant bg-white text-base leading-relaxed" id="reg-note" name="note" rows="3" placeholder="Channels you use, order volume, market…"></textarea>
         </div>
-        <button class="w-full min-h-[48px] bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" type="submit">Register for the next Friday</button>
+        <button class="w-full min-h-[48px] bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" type="submit">Register for your Friday</button>
         <p class="text-xs text-outline text-center" id="demo-form-hint">Submitting only shows a confirmation for now—server integration is coming.</p>
       </form>
       <p class="text-center text-sm text-on-surface-variant mt-6" id="demo-success" hidden role="status">Thanks! You’re on the list—we’ll confirm by email once the form is connected.</p>
@@ -1080,9 +1092,58 @@
         });
       }
 
+      function fillFridaySessions2026() {
+        var sel = document.getElementById('reg-friday');
+        var formEl = document.getElementById('demo-form');
+        if (!sel) return;
+        sel.innerHTML = '';
+        var placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Choose a Friday in 2026…';
+        sel.appendChild(placeholder);
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        var y = 2026;
+        var end = new Date(y, 11, 31);
+        var d = new Date(y, 0, 1);
+        var fmt = new Intl.DateTimeFormat('en-US', {
+          weekday: 'long',
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        });
+        while (d <= end) {
+          if (d.getDay() === 5) {
+            var day = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            if (day >= today) {
+              var iso =
+                day.getFullYear() +
+                '-' +
+                String(day.getMonth() + 1).padStart(2, '0') +
+                '-' +
+                String(day.getDate()).padStart(2, '0');
+              var opt = document.createElement('option');
+              opt.value = iso;
+              opt.textContent = fmt.format(day);
+              sel.appendChild(opt);
+            }
+          }
+          d.setDate(d.getDate() + 1);
+        }
+        if (sel.options.length <= 1) {
+          placeholder.textContent = 'No 2026 Friday sessions left—use contact links below';
+          placeholder.disabled = true;
+          sel.required = false;
+          sel.disabled = true;
+          var sub = formEl ? formEl.querySelector('button[type="submit"]') : null;
+          if (sub) sub.disabled = true;
+        }
+      }
+
       var form = document.getElementById('demo-form');
       var hint = document.getElementById('demo-form-hint');
       var success = document.getElementById('demo-success');
+      fillFridaySessions2026();
       if (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
