@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html class="no-js scroll-smooth" lang="en">
 <head>
   <meta charset="utf-8"/>
+  <script>
+    document.documentElement.classList.remove('no-js');
+  </script>
   <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
   <meta content="#001b3d" name="theme-color"/>
   <title>Baztit Commerce | AI Sales &amp; Order Flow for Growing Retail</title>
@@ -155,6 +158,40 @@
     @media (prefers-reduced-motion: reduce) {
       .wizard-hint-dot .ping { animation: none; opacity: 0.45; }
     }
+    @keyframes heroChatIn {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 0.45rem, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .hero-chat-scroll .hero-chat-line {
+      opacity: 0;
+      animation: heroChatIn 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-play-state: paused;
+    }
+    .hero-chat-scroll.is-in-view .hero-chat-line {
+      animation-play-state: running;
+    }
+    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(1) { animation-delay: 0s; }
+    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(2) { animation-delay: 0.52s; }
+    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(3) { animation-delay: 1.04s; }
+    .hero-chat-scroll.is-in-view .hero-chat-line:nth-child(4) { animation-delay: 1.56s; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-chat-scroll .hero-chat-line {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+    html.no-js .hero-chat-scroll .hero-chat-line {
+      opacity: 1 !important;
+      animation: none !important;
+      transform: none !important;
+    }
   </style>
 </head>
 <body class="bg-surface font-body text-on-surface">
@@ -246,26 +283,26 @@
             </div>
             <p class="text-[11px] text-on-surface-variant mt-2 leading-snug">Same AI on messengers <strong class="text-primary-container">and</strong> as a chat widget on your site—one brain, every channel.</p>
           </div>
-          <div class="bg-surface-container-lowest p-3 sm:p-4 space-y-3 max-h-[min(26rem,65dvh)] overflow-y-auto overscroll-contain touch-pan-y custom-scrollbar" role="region" aria-label="Example: product chat to shipped order">
-            <div class="flex justify-start">
+          <div class="hero-chat-scroll bg-surface-container-lowest p-3 sm:p-4 space-y-3 max-h-[min(26rem,65dvh)] overflow-y-auto overscroll-contain touch-pan-y custom-scrollbar" id="hero-chat-scroll" role="region" aria-label="Example: product chat to shipped order">
+            <div class="hero-chat-line flex justify-start">
               <div class="max-w-[min(92%,17rem)] rounded-2xl rounded-tl-sm bg-surface-container-high px-3 py-2.5 text-xs text-on-surface border border-outline-variant/25 shadow-sm">
                 <p class="leading-snug mb-2">Do you have something like this in stock?</p>
                 <img alt="Watch the customer referenced" class="w-full max-w-[9.5rem] max-h-36 rounded-md object-contain bg-white border border-outline-variant/30" decoding="async" height="152" loading="lazy" src="s-l1200.jpg" width="152"/>
               </div>
             </div>
-            <div class="flex justify-end">
+            <div class="hero-chat-line flex justify-end">
               <div class="max-w-[min(92%,17rem)] rounded-2xl rounded-tr-sm bg-primary-container text-white px-3 py-2.5 text-xs shadow-sm">
                 <p class="text-[10px] font-bold uppercase tracking-wide text-secondary-fixed mb-1">Baztit AI Sales</p>
                 <p class="leading-snug mb-2">Yes — here’s a close match. <strong class="text-secondary-fixed">$189</strong></p>
                 <img alt="Suggested product" class="w-full max-w-[9.5rem] max-h-36 rounded-md object-contain bg-primary-container border border-white/20" decoding="async" height="152" loading="lazy" src="AMWW67_15.jpg.webp" width="152"/>
               </div>
             </div>
-            <div class="flex justify-start">
+            <div class="hero-chat-line flex justify-start">
               <div class="max-w-[min(92%,17rem)] rounded-2xl rounded-tl-sm bg-surface-container-high px-3 py-2.5 text-xs text-on-surface border border-outline-variant/25 shadow-sm leading-snug">
                 Ship to <strong class="text-primary-container">12 Oak St, Austin TX</strong>. Paid on file—please confirm.
               </div>
             </div>
-            <div class="rounded-lg bg-secondary-container/35 border border-secondary/25 px-3 py-2.5 text-[11px] text-primary-container leading-snug">
+            <div class="hero-chat-line rounded-lg bg-secondary-container/35 border border-secondary/25 px-3 py-2.5 text-[11px] text-primary-container leading-snug">
               <p class="font-bold text-secondary mb-0.5">Order #8842 · synced</p>
               <p class="text-on-surface-variant">Conversation + order row in <strong class="text-primary-container">CRM</strong> and your <strong class="text-primary-container">live sheet</strong> — label printed, carrier pickup scheduled.</p>
             </div>
@@ -1248,6 +1285,33 @@
               }
             });
         });
+      }
+
+      var heroChat = document.getElementById('hero-chat-scroll');
+      if (heroChat) {
+        function markHeroChatInView() {
+          heroChat.classList.add('is-in-view');
+        }
+        var heroReduce =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (heroReduce) {
+          markHeroChatInView();
+        } else if ('IntersectionObserver' in window) {
+          var heroIo = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  markHeroChatInView();
+                  heroIo.disconnect();
+                }
+              });
+            },
+            { root: null, threshold: 0.12, rootMargin: '0px' }
+          );
+          heroIo.observe(heroChat);
+        } else {
+          markHeroChatInView();
+        }
       }
 
       syncStep1UI();
