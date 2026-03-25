@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
   <meta content="#001b3d" name="theme-color"/>
   <title>Baztit Commerce | AI Sales &amp; Order Flow for Growing Retail</title>
-  <meta content="From first ad click to delivered parcel—AI handles chats, orders sync to your sheet, and carriers update automatically. Built for online commerce." name="description"/>
+  <meta content="Peace of mind for customers and orders. AI handles chats 24/7; your team runs one sheet from ad click to delivery. Built for online commerce." name="description"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
@@ -84,6 +84,13 @@
     }
   </script>
   <style>
+    /* Anchor scroll: clear sticky header + notch (WCAG-friendly; no maximum-scale hacks) */
+    html {
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 6.5rem);
+    }
+    @media (min-width: 768px) {
+      html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.5rem); }
+    }
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     .glass-nav {
       backdrop-filter: blur(24px);
@@ -91,10 +98,6 @@
     }
     .custom-scrollbar::-webkit-scrollbar { width: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #00696b; border-radius: 10px; }
-    .wizard-panel { display: none; }
-    .wizard-panel.is-active { display: block; }
-    .wizard-dot { transition: background .2s, transform .2s; }
-    .wizard-dot.is-current { transform: scale(1.15); }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .animate-bounce, .animate-pulse, .animate-dash { animation: none !important; }
@@ -163,6 +166,7 @@
           <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#platform">Platform</a>
           <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#how-it-works">How it works</a>
           <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#results">Results</a>
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#pricing">Pricing</a>
           <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#services">Services</a>
           <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#demo">Demo</a>
         </div>
@@ -172,6 +176,7 @@
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#platform">Platform</a>
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#how-it-works">How it works</a>
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#results">Results</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#pricing">Pricing</a>
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#services">Services</a>
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#demo">Demo</a>
         <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#contact">Contact</a>
@@ -187,7 +192,7 @@
           Built for online retail &amp; e-commerce
         </span>
         <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-container leading-tight tracking-tight mb-6">
-          Stop losing sales to slow replies and <span class="text-secondary">messy order tracking.</span>
+          Let’s bring you <span class="text-secondary">peace of mind</span>—for every customer and every order.
         </h1>
         <p class="text-on-surface-variant text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
           AI handles customer conversations 24/7. Your team manages orders and shipping in one place. Replace scattered tools with one workflow—from ad click to delivered parcel.
@@ -332,25 +337,28 @@
     </div>
   </section>
 
-  <!-- Wizard: How it works -->
+  <!-- How it works: sequential journey blocks -->
   <section class="py-20 sm:py-28 bg-white border-y border-outline-variant/30 overflow-hidden" id="how-it-works" aria-labelledby="how-heading">
     <div class="max-w-5xl mx-auto px-6 sm:px-8">
-      <div class="text-center mb-10 sm:mb-14">
+      <div class="text-center mb-8 sm:mb-10">
         <h2 id="how-heading" class="font-headline text-3xl sm:text-5xl font-extrabold text-primary-container mb-4">How it works</h2>
-        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Walk the full journey—from traffic to delivery—in four interactive steps. Follow the <strong class="text-primary-container">pulsing dot</strong> on the action to take; when <strong class="text-primary-container">Next</strong> unlocks, it gets the same dot—press it to continue.</p>
+        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">Four blocks follow one journey—from traffic to delivery. Scroll in order, or jump with the shortcuts. On each block we explain what Baztit does there; try the <strong class="text-primary-container">pulsing dot</strong> on the suggested action.</p>
       </div>
 
-      <!-- Progress -->
-      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="wizard-progress" role="group" aria-label="Journey steps">
-        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-secondary text-white font-bold text-sm is-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="1" aria-current="step">1</button>
-        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="2">2</button>
-        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="3">3</button>
-        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="4">4</button>
-      </div>
+      <nav class="journey-toc flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-12 sm:mb-14 sticky top-[calc(env(safe-area-inset-top)+8.25rem)] md:top-[calc(env(safe-area-inset-top)+3.5rem)] z-30 -mx-2 px-2 py-3 sm:py-3.5 sm:mx-0 sm:px-4 rounded-xl bg-white/90 backdrop-blur-md border border-outline-variant/25 shadow-sm" id="journey-toc" aria-label="Journey shortcuts">
+        <a class="min-h-[44px] inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-surface-container-high text-primary-container text-xs sm:text-sm font-bold hover:bg-secondary-container/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary transition-colors" href="#journey-traffic">1 · Traffic</a>
+        <a class="min-h-[44px] inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-surface-container-high text-primary-container text-xs sm:text-sm font-bold hover:bg-secondary-container/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary transition-colors" href="#journey-ai-chat">2 · AI chat</a>
+        <a class="min-h-[44px] inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-surface-container-high text-primary-container text-xs sm:text-sm font-bold hover:bg-secondary-container/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary transition-colors" href="#journey-sheet">3 · Live sheet</a>
+        <a class="min-h-[44px] inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-surface-container-high text-primary-container text-xs sm:text-sm font-bold hover:bg-secondary-container/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary transition-colors" href="#journey-carrier">4 · Carrier</a>
+        <a class="min-h-[44px] inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-primary-container text-on-primary text-xs sm:text-sm font-bold hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary transition-colors" href="#baztit-at-a-glance">Overview</a>
+      </nav>
 
       <!-- Step 1 -->
-      <div class="wizard-panel is-active" data-wizard-step="1" aria-hidden="false">
-        <p class="text-on-surface-variant text-sm sm:text-base text-center max-w-2xl mx-auto mb-4 leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Launch ads</strong> and watch the paths draw. When the flow finishes, <strong>Next</strong> lights up—go to Step 2 (AI chat demo).</p>
+      <article class="mb-14 sm:mb-20 pb-14 sm:pb-20 border-b border-outline-variant/25 last:border-0 last:pb-0" id="journey-traffic" data-journey-step="1">
+        <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-3">Step 1 · Traffic</p>
+        <h3 class="font-headline text-xl sm:text-2xl font-bold text-primary-container mb-4">Turn reach into one inbox</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-4 max-w-2xl leading-relaxed">Baztit doesn’t care which channel started the conversation—ads, site, or social all <strong class="text-primary-container">feed the same pipeline</strong>. This block shows traffic splitting to site and DMs, then merging into <strong class="text-primary-container">unified chats</strong> so nothing is lost between tabs.</p>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">Try it:</strong> tap <strong>Launch ads</strong> and watch the paths draw.</p>
         <div class="bg-primary-container rounded-2xl p-6 sm:p-8 min-h-[340px] sm:min-h-[400px] flex flex-col items-center justify-center relative shadow-2xl overflow-hidden">
           <div class="absolute inset-0 opacity-20 pointer-events-none">
             <div class="h-full w-full bg-[radial-gradient(#5af8fb_1px,transparent_1px)] [background-size:20px_20px]"></div>
@@ -417,27 +425,22 @@
             </div>
             <p class="text-center text-on-primary-container text-sm max-w-md min-h-[3rem]" id="step1-flow-caption">Visitors land on your site and profiles…</p>
             <div class="mt-4 px-4 py-2.5 bg-white/10 rounded-lg backdrop-blur-md border border-white/20 hidden max-w-sm mx-auto" id="step1-ingest">
-              <p class="text-center text-on-primary-container text-xs sm:text-sm leading-snug">Scroll down—tap <strong class="text-secondary-fixed">Next</strong> to continue (AI chat is next).</p>
+              <p class="text-center text-on-primary-container text-xs sm:text-sm leading-snug">Scroll to <strong class="text-secondary-fixed">Step 2 · AI chat</strong> below for the knowledge-based reply demo.</p>
             </div>
           </div>
         </div>
         <p class="text-center text-on-surface-variant mt-6 max-w-xl mx-auto text-sm">Meta / search / social—wherever your buyers discover you, messages land in one pipeline.</p>
-        <div class="flex justify-end mt-8">
-          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[120px] bg-primary-container text-on-primary pr-8 pl-11 rounded-md font-bold hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-40 disabled:cursor-not-allowed" data-next id="next-from-step1" disabled>
-            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 hidden" aria-hidden="true">
-              <span class="ping"></span>
-              <span class="wizard-hint-dot-core"></span>
-            </span>
-            Next
-          </button>
-        </div>
-      </div>
+        <p class="text-center mt-6">
+          <a class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-md font-bold text-sm bg-primary-container text-on-primary hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#journey-ai-chat">Continue to AI chat <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_downward</span></a>
+        </p>
+      </article>
 
       <!-- Step 2 -->
-      <div class="wizard-panel" data-wizard-step="2" aria-hidden="true">
+      <article class="mb-14 sm:mb-20 pb-14 sm:pb-20 border-b border-outline-variant/25 last:border-0 last:pb-0" id="journey-ai-chat" data-journey-step="2">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 2 · AI chat</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">A shopper writes in—with a photo</h3>
-        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Send</strong>, wait for the AI reply, then tap <strong>Buy now</strong>. After the order is placed, <strong>Next</strong> unlocks—Step 3 is the live order sheet.</p>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">Answers grounded in your knowledge base</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-4 max-w-2xl leading-relaxed">This step shows how the agent uses your <strong class="text-primary-container">product catalog</strong>, <strong class="text-primary-container">knowledge base</strong>, and <strong class="text-primary-container">company facts</strong>—so replies stay on-brand and accurate. It can <strong class="text-primary-container">qualify</strong> shoppers (stock, shipping, intent) and <strong class="text-primary-container">guide</strong> them to the next step with AI, not generic scripts.</p>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">Try it:</strong> tap <strong>Send</strong> to post the message with the photo. Wait for the AI reply, then tap <strong>Buy now</strong>. Then scroll to <strong>Step 3</strong> to see the order in the sheet.</p>
         <div class="bg-surface-container-low rounded-2xl p-4 sm:p-6 shadow-xl border border-outline-variant/30 max-w-lg mx-auto flex flex-col min-h-[420px]">
           <div class="flex justify-between items-center mb-4 pb-4 border-b border-outline-variant/40">
             <div class="flex items-center gap-3">
@@ -450,20 +453,24 @@
             <span class="material-symbols-outlined text-outline">more_horiz</span>
           </div>
           <div class="flex-grow space-y-4 mb-4 custom-scrollbar overflow-y-auto px-1 max-h-64" id="chat-scroll">
-            <div class="flex justify-start">
+            <div id="chat-empty" class="flex flex-col items-center justify-center min-h-[11rem] sm:min-h-[12rem] text-center text-on-surface-variant text-sm px-2" aria-live="polite">
+              <span class="material-symbols-outlined text-4xl text-outline mb-2 opacity-50" aria-hidden="true">chat_bubble_outline</span>
+              <p>No messages yet. Tap <strong class="text-primary-container">Send</strong> to deliver your question with the product photo.</p>
+            </div>
+            <div id="chat-user-message" class="hidden flex justify-start" aria-hidden="true">
               <div class="bg-surface-container-lowest p-3 rounded-lg rounded-tl-none max-w-[90%] shadow-sm border border-outline-variant/20">
-                <img alt="Product reference photo" class="rounded mb-2 w-full h-28 sm:h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHN2eW040VT_gCKCvPrXwoUdMEKeyqHbbRaebKO4ZFZMKnA2b_nz_vD8DFiGW46QNkfOPLhQJDv7PQ8VQ0ZC3zpyQ4H_fsohy1EVwf3d9SM8LfpDRl_-NZ-MNGLXo9uwpImKQgSUP4t-rINkJNwtIp9KqMCqok-Y1p7EvmP8IhsDjJrIem1ReVpCIGOvIv-ZIj8v5wkXIpDi3lGZCUA5ohSNKtX1gXtNGJTTXCTUrQHML-D9bZ__mvsc2MeUQg3kl1_gUKFckPD8Y"/>
+                <img alt="Minimalist black watch with white dial—customer reference photo" class="rounded mb-2 w-full h-28 sm:h-32 object-cover bg-white" decoding="async" loading="lazy" src="s-l1200.jpg"/>
                 <p class="text-sm">Hi! Do you have something like this in stock? Ship to London?</p>
               </div>
             </div>
             <div id="chat-typing" class="hidden flex justify-start">
               <div class="bg-white px-4 py-2 rounded-lg text-xs text-on-surface-variant border border-outline-variant/30">AI is typing…</div>
             </div>
-            <div class="hidden flex justify-end" id="ai-reply">
+            <div class="hidden flex justify-end" id="ai-reply" aria-hidden="true">
               <div class="bg-primary-container text-white p-3 rounded-lg rounded-tr-none max-w-[90%] shadow-sm">
-                <p class="text-sm">Yes—we have 4 units of the Minimalist White Watch. Delivery to London: 2–3 business days via DHL. Want me to reserve one?</p>
+                <p class="text-sm">Yes—we have 4 units of this minimalist watch in stock (pulled from your catalog). Delivery to London: 2–3 business days via DHL. Want me to reserve one?</p>
                 <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="text-[10px] bg-white/10 px-2 py-1 rounded">White Watch · $129</span>
+                  <span class="text-[10px] bg-white/10 px-2 py-1 rounded">Minimalist watch · $129</span>
                 </div>
                 <button type="button" class="mt-3 w-full min-h-[44px] bg-secondary text-on-secondary py-2 rounded font-bold text-xs uppercase tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white relative pr-2" id="btn-buy">
                   <span class="wizard-hint-dot pointer-events-none absolute top-1 right-1 hidden" id="hint-step2-buy" aria-hidden="true">
@@ -477,7 +484,7 @@
             <div id="crm-notification" class="hidden rounded-lg border border-secondary bg-secondary-container/30 p-3 text-xs">
               <div class="flex items-center gap-2 font-bold text-primary-container">
                 <span class="material-symbols-outlined text-secondary text-lg">notifications_active</span>
-                New lead in CRM · Sarah J. · “White Watch”
+                New lead in CRM · Sarah J. · “Minimalist watch”
               </div>
               <p class="mt-1 text-on-surface-variant">Your manager gets an instant alert—same second the shopper commits.</p>
             </div>
@@ -493,140 +500,217 @@
             </button>
           </div>
         </div>
-        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
-          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high order-2 sm:order-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
-          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] bg-primary-container text-on-primary pr-8 pl-11 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed order-1 sm:order-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-chat" disabled>
-            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 hidden" aria-hidden="true">
-              <span class="ping"></span>
-              <span class="wizard-hint-dot-core"></span>
-            </span>
-            Next
-          </button>
-        </div>
-      </div>
+        <p class="text-center mt-6">
+          <a class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-md font-bold text-sm bg-primary-container text-on-primary hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#journey-sheet">Continue to live sheet <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_downward</span></a>
+        </p>
+      </article>
 
       <!-- Step 3 -->
-      <div class="wizard-panel" data-wizard-step="3" aria-hidden="true">
+      <article class="mb-14 sm:mb-20 pb-14 sm:pb-20 border-b border-outline-variant/25 last:border-0 last:pb-0" id="journey-sheet" data-journey-step="3">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 3 · Live sheet</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">Orders appear in a familiar spreadsheet</h3>
-        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Ship package</strong> on the new order row. When status updates, <strong>Next</strong> unlocks—Step 4 shows carrier handoff and tracking (demo).</p>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">Orders land in one live sheet your team already uses</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-4 max-w-2xl leading-relaxed">Baztit syncs each closed sale from AI chat into a <strong class="text-primary-container">single spreadsheet</strong>: customer, line items, payment, and fulfillment status stay on <strong class="text-primary-container">one row</strong>. Ops sees the queue at a glance—no re-typing into another CRM. From here, <strong class="text-primary-container">Ship</strong> is the handoff that tells the system (and carriers) the parcel is going out.</p>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">Try it:</strong> tap <strong>Ship package</strong> on the new order row, then scroll to <strong>Step 4</strong> to watch the carrier handoff and tracking sync (demo).</p>
         <div class="bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden max-w-3xl mx-auto">
-          <div class="bg-green-700 text-white px-4 py-2 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-sm">table_chart</span>
-              <span class="text-xs font-bold uppercase">Baztit Order Sheet (demo)</span>
+          <div class="bg-green-700 text-white px-4 py-2.5 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="material-symbols-outlined text-sm shrink-0">table_chart</span>
+              <span class="text-xs font-bold uppercase truncate">Baztit Order Sheet (demo)</span>
             </div>
-            <span class="text-[10px] opacity-90">Synced</span>
+            <span class="text-[10px] opacity-90 shrink-0">Synced</span>
           </div>
-          <div class="overflow-x-auto touch-pan-x -mx-1 px-1 [scrollbar-width:thin]">
-            <table class="w-full text-left text-xs min-w-[500px]">
+          <div class="overflow-x-auto touch-pan-x [scrollbar-width:thin]">
+            <table class="w-full text-left text-xs min-w-[500px] sm:min-w-[560px]">
               <thead class="bg-surface-container-high font-bold border-b">
                 <tr>
-                  <th class="p-3">Order</th>
-                  <th class="p-3">Customer</th>
+                  <th class="p-3 whitespace-nowrap">Order</th>
+                  <th class="p-3 whitespace-nowrap">Customer</th>
                   <th class="p-3">Item</th>
-                  <th class="p-3">Amount</th>
-                  <th class="p-3">Status</th>
-                  <th class="p-3">Action</th>
+                  <th class="p-3 whitespace-nowrap">Amount</th>
+                  <th class="p-3 whitespace-nowrap">Status</th>
+                  <th class="p-3 whitespace-nowrap w-[1%]">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="border-b bg-green-50/50">
-                  <td class="p-3 font-mono">#8843</td>
-                  <td class="p-3">Sarah J.</td>
-                  <td class="p-3 italic">White Watch</td>
-                  <td class="p-3">$129.00</td>
-                  <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-bold" id="sheet-status">PAID</span></td>
-                  <td class="p-3 relative pr-6">
-                    <button type="button" class="relative bg-primary-container text-white min-h-[44px] min-w-[96px] px-3 py-2 rounded font-bold text-[11px] hover:bg-secondary transition-colors disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="btn-ship">Ship package</button>
-                    <span class="wizard-hint-dot pointer-events-none absolute -top-1.5 right-0" id="hint-step3" aria-hidden="true">
-                      <span class="ping"></span>
-                      <span class="wizard-hint-dot-core"></span>
-                    </span>
+                  <td class="p-3 font-mono align-middle">#8843</td>
+                  <td class="p-3 align-middle">Sarah J.</td>
+                  <td class="p-3 italic align-middle">Minimalist watch</td>
+                  <td class="p-3 align-middle whitespace-nowrap">$129.00</td>
+                  <td class="p-3 align-middle"><span class="bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-bold" id="sheet-status">PAID</span></td>
+                  <td class="p-3 align-middle">
+                    <div class="inline-flex items-center gap-2">
+                      <span class="wizard-hint-dot pointer-events-none relative shrink-0" id="hint-step3" aria-hidden="true">
+                        <span class="ping"></span>
+                        <span class="wizard-hint-dot-core"></span>
+                      </span>
+                      <button type="button" class="bg-primary-container text-white min-h-[44px] min-w-[96px] px-3 py-2 rounded font-bold text-[11px] hover:bg-secondary transition-colors disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary whitespace-nowrap" id="btn-ship">Ship package</button>
+                    </div>
                   </td>
                 </tr>
                 <tr class="border-b opacity-50">
-                  <td class="p-3 font-mono">#8842</td>
-                  <td class="p-3">Michael R.</td>
-                  <td class="p-3 italic">Tech bag</td>
-                  <td class="p-3">$85.00</td>
-                  <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">DELIVERED</span></td>
-                  <td class="p-3">—</td>
+                  <td class="p-3 font-mono align-middle">#8842</td>
+                  <td class="p-3 align-middle">Michael R.</td>
+                  <td class="p-3 italic align-middle">Tech bag</td>
+                  <td class="p-3 align-middle whitespace-nowrap">$85.00</td>
+                  <td class="p-3 align-middle"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">DELIVERED</span></td>
+                  <td class="p-3 align-middle text-on-surface-variant">—</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <p class="text-center text-on-surface-variant mt-6 text-sm max-w-xl mx-auto">Click <strong>Ship package</strong> to move the order forward—your team stays in a sheet they already understand.</p>
-        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
-          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
-          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] bg-primary-container text-on-primary pr-8 pl-11 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-sheet" disabled>
-            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 hidden" aria-hidden="true">
-              <span class="ping"></span>
-              <span class="wizard-hint-dot-core"></span>
-            </span>
-            Next
-          </button>
-        </div>
-      </div>
+        <p class="text-center text-on-surface-variant mt-6 text-sm max-w-xl mx-auto leading-relaxed">Follow the pulsing dot next to <strong>Ship package</strong>, then open <strong>Step 4</strong> below.</p>
+        <p class="text-center mt-6">
+          <a class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-md font-bold text-sm bg-primary-container text-on-primary hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#journey-carrier">Continue to carrier <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_downward</span></a>
+        </p>
+      </article>
 
       <!-- Step 4 -->
-      <div class="wizard-panel" data-wizard-step="4" aria-hidden="true">
+      <article class="mb-6 sm:mb-8" id="journey-carrier" data-journey-step="4">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 4 · Carrier</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">DHL picks up—your sheet updates itself</h3>
-        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> watch the log and status update (demo). When you’re done, use <strong>Continue to outcomes</strong> to jump to the summary below—the pulsing dot shows it’s the main exit from this tour.</p>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <div>
-            <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">A shipping request is created for DHL. The courier is notified, the parcel moves out, and tracking flows back—so the row in your sheet moves from <strong>shipping</strong> to <strong>delivered</strong> without manual re-typing.</p>
-            <div class="space-y-1 font-mono text-[11px] sm:text-xs bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/30 max-h-40 overflow-y-auto custom-scrollbar" id="dhl-log">
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">From ship click to tracking—without leaving the row</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-4 max-w-2xl leading-relaxed">After <strong class="text-primary-container">Ship package</strong>, Baztit creates a <strong class="text-primary-container">carrier request</strong> (here: DHL demo), pulls a <strong class="text-primary-container">label</strong>, and pushes <strong class="text-primary-container">status + tracking</strong> back into the same spreadsheet row. Your team does not re-type tracking into chat or mail—the sheet becomes the source of truth through <strong class="text-primary-container">delivered</strong>.</p>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What happens in this demo:</strong> the log on the left walks through the handoff; the card on the right shows the carrier step in plain language. When you scroll this block into view after shipping in Step 3, the sequence runs automatically.</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div class="flex flex-col gap-4 min-w-0">
+            <p class="text-xs font-bold text-outline uppercase tracking-wider">Integration log (demo)</p>
+            <div class="space-y-1.5 font-mono text-[11px] sm:text-xs bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/30 min-h-[8.5rem] overflow-y-auto custom-scrollbar" id="dhl-log">
               <p class="text-outline">&gt; System: waiting for ship trigger…</p>
             </div>
-            <div class="mt-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 text-sm" id="sheet-mirror">
+            <p class="text-xs text-on-surface-variant">Mirror of your sheet row—updates as the carrier flow runs.</p>
+            <div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 text-sm" id="sheet-mirror">
               <span class="font-bold text-primary-container">Order #8843</span>
               <span class="text-on-surface-variant"> · Status: </span>
               <span class="font-bold text-secondary" id="wizard-sheet-mirror-status">READY TO SHIP</span>
             </div>
           </div>
-          <div class="bg-surface-container-highest rounded-2xl p-8 flex flex-col items-center justify-center relative shadow-xl overflow-hidden min-h-[300px]">
-            <div class="relative z-10 text-center" id="dhl-visual">
-              <div class="w-28 h-28 sm:w-32 sm:h-32 bg-[#FFCC00] rounded-lg flex items-center justify-center mb-5 shadow-lg border-4 border-[#D40511]/20 mx-auto">
-                <span class="material-symbols-outlined text-[#D40511] text-5xl sm:text-6xl">local_shipping</span>
+          <div class="bg-surface-container-highest rounded-2xl p-6 sm:p-8 shadow-xl border border-outline-variant/40 min-h-0">
+            <div class="flex flex-col gap-6 max-w-md mx-auto" id="dhl-visual">
+              <div class="flex items-center justify-between gap-3 flex-wrap">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-primary-container">
+                  <span class="material-symbols-outlined text-secondary text-2xl" aria-hidden="true">local_shipping</span>
+                  Carrier handoff
+                </span>
+                <span class="bg-[#D40511] text-white px-3 py-1.5 rounded-full text-xs font-black tracking-wide shrink-0">DHL · demo</span>
               </div>
-              <div class="bg-[#D40511] text-white px-5 py-1.5 rounded-full font-black text-sm tracking-wide">DHL · demo</div>
-              <p class="mt-4 text-primary-container font-bold animate-pulse text-sm" id="dhl-status-text">Ready for pickup</p>
-            </div>
-            <div class="absolute inset-0 bg-secondary/10 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none" id="dhl-overlay">
-              <div class="bg-white p-5 rounded-xl shadow-2xl border-2 border-secondary text-center mx-4">
-                <span class="material-symbols-outlined text-secondary text-4xl mb-1">task_alt</span>
-                <p class="font-bold text-primary-container uppercase tracking-widest text-sm">Request confirmed</p>
-                <p class="text-xs text-outline mt-1">Courier notified (demo)</p>
+              <div class="rounded-xl bg-[#FFCC00] border-2 border-[#D40511]/25 p-10 sm:p-12 flex justify-center items-center shadow-inner">
+                <span class="material-symbols-outlined text-[#D40511] text-6xl sm:text-7xl" aria-hidden="true">local_shipping</span>
+              </div>
+              <div class="text-center space-y-1">
+                <p class="text-primary-container font-bold text-base leading-snug" id="dhl-status-text">Ready for pickup</p>
+                <p class="text-xs text-on-surface-variant leading-relaxed" id="dhl-status-sub">Waiting for the ship trigger from Step 3…</p>
+              </div>
+              <div class="hidden rounded-lg border-2 border-secondary bg-secondary-container/30 px-4 py-4 text-center space-y-1 transition-opacity duration-300" id="dhl-confirm" role="status">
+                <span class="material-symbols-outlined text-secondary text-3xl" aria-hidden="true">task_alt</span>
+                <p class="font-bold text-primary-container text-sm">Label created · courier notified</p>
+                <p class="text-xs text-on-surface-variant">Demo only—no real carrier API call from this page.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
-          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
-          <div class="relative inline-flex w-full sm:w-auto justify-end">
-            <button type="button" class="relative min-h-[44px] w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-3 pl-11 rounded-md font-bold shadow-lg hover:shadow-xl transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container" id="wizard-finish">
-              <span class="wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2" id="hint-step4" aria-hidden="true">
-                <span class="ping"></span>
-                <span class="wizard-hint-dot-core"></span>
-              </span>
-              Continue to outcomes
-            </button>
-          </div>
+        <p class="text-center mt-8">
+          <a class="relative inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-3.5 pl-12 rounded-md font-bold shadow-lg hover:shadow-xl transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container" id="wizard-finish" href="#baztit-at-a-glance">
+            <span class="wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2" id="hint-step4" aria-hidden="true">
+              <span class="ping"></span>
+              <span class="wizard-hint-dot-core"></span>
+            </span>
+            See the full picture
+          </a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Baztit at a glance + demo CTA -->
+  <section class="py-20 sm:py-28 bg-surface-container-low border-y border-outline-variant/30" id="baztit-at-a-glance" aria-labelledby="glance-heading">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8">
+      <div class="text-center mb-12 sm:mb-14">
+        <h2 id="glance-heading" class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-4">Baztit Commerce at a glance</h2>
+        <p class="text-on-surface-variant text-lg max-w-3xl mx-auto leading-relaxed">Everything above is a slice of one system. In production, <strong class="text-primary-container">Baztit Commerce</strong> connects <strong class="text-primary-container">AI sales</strong> (trained on your catalog and policies), a <strong class="text-primary-container">unified inbox</strong>, a <strong class="text-primary-container">live order sheet</strong>, and <strong class="text-primary-container">carrier integrations</strong> so status and tracking flow back without copy-paste. You get fewer tools, fewer lost orders, and a clear path from first message to delivered parcel.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mb-12">
+        <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-3">smart_toy</span>
+          <h3 class="font-headline font-bold text-primary-container mb-2">AI layer</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Trained on products, stock, and brand voice; qualifies leads and closes in chat.</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-3">inbox</span>
+          <h3 class="font-headline font-bold text-primary-container mb-2">Operations layer</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">One sheet for orders and statuses; ship triggers talk to carriers and update the row.</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-3">hub</span>
+          <h3 class="font-headline font-bold text-primary-container mb-2">Integrations</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Chat apps and shipping connectors—wired to your workflow, not a generic CRM template.</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-3">support_agent</span>
+          <h3 class="font-headline font-bold text-primary-container mb-2">How we work with you</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">We implement and tune the stack for your catalog and carriers—then stay on deck for support.</p>
+        </div>
+      </div>
+      <div class="rounded-2xl bg-primary-container text-white p-8 sm:p-10 text-center shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-48 h-48 bg-secondary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" aria-hidden="true"></div>
+        <p class="relative z-10 text-lg sm:text-xl font-headline font-extrabold mb-3">Better to see it once than read about it ten times</p>
+        <p class="relative z-10 text-on-primary-container text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">The blocks above are interactive sketches. On a live call we walk your channels, volume, and catalog—so you can judge fit in one session.</p>
+        <div class="relative z-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+          <a class="inline-flex items-center justify-center min-h-[48px] px-8 py-3.5 rounded-md font-bold text-base bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white shadow-lg hover:scale-[1.02] transition-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href="#demo">Book a live demo</a>
+          <a class="inline-flex items-center justify-center min-h-[48px] px-8 py-3.5 rounded-md font-bold text-base bg-white/10 border border-white/30 text-white hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href="#contact">Talk to us</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Outcomes -->
-  <section class="py-20 sm:py-24 bg-surface-container-low" id="outcomes">
+  <section class="py-16 sm:py-20 bg-white" id="outcomes">
     <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
-      <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-6">What you get in the end</h2>
+      <h2 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary-container mb-6">What you get in the end</h2>
       <p class="text-on-surface-variant text-lg leading-relaxed">
         Faster replies, fewer dropped orders, a single place for leads and fulfillment, and automatic status updates as carriers move parcels. Baztit Commerce is tuned for <strong class="text-primary-container">online product sales</strong>—and works well for <strong class="text-primary-container">service businesses</strong> with a high volume of inbound messages too.
       </p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 sm:py-24 bg-surface-container-highest/40 border-y border-outline-variant/25" id="pricing" aria-labelledby="pricing-heading">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+        <h2 id="pricing-heading" class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-3">Simple, transparent pricing</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed">One implementation fee gets your live system—not a generic template.</p>
+      </div>
+      <div class="max-w-2xl mx-auto bg-surface-container-lowest rounded-2xl p-8 sm:p-12 shadow-2xl border border-outline-variant/20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 pointer-events-none select-none" aria-hidden="true">
+          <div class="bg-secondary text-white font-bold text-[10px] sm:text-xs px-12 py-2 rotate-45 translate-x-8 translate-y-5 sm:translate-x-10 sm:translate-y-6 shadow-sm">ONE-TIME</div>
+        </div>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-2">Implementation &amp; setup</h3>
+        <p class="text-on-surface-variant mb-6 leading-relaxed"><strong class="text-primary-container">Installation and configuration</strong> of your working Baztit Commerce environment—integrations, AI training on your catalog and policies, channels, order sheet, and carriers—so your team can go live with confidence.</p>
+        <div class="flex flex-wrap items-baseline gap-2 mb-2">
+          <span class="font-headline text-5xl sm:text-6xl font-extrabold text-primary-container tracking-tight">$950</span>
+          <span class="text-on-surface-variant font-semibold">USD</span>
+        </div>
+        <p class="text-sm font-bold text-secondary mb-8 uppercase tracking-wide">One-time payment · not a subscription</p>
+        <div class="mb-8 p-4 rounded-lg bg-secondary-container/15 border border-secondary/25">
+          <p class="text-on-surface-variant text-sm leading-relaxed"><strong class="text-primary-container">Add-ons are separate:</strong> performance <a class="text-secondary font-bold underline underline-offset-2 hover:no-underline" href="#services">advertising</a>, new <a class="text-secondary font-bold underline underline-offset-2 hover:no-underline" href="#services">sites or store builds</a>, and custom development or tweaks—scoped and quoted per project. Tell us what you need; we’ll make it work.</p>
+        </div>
+        <ul class="space-y-3 mb-10 text-left">
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">check</span>
+            <span class="font-medium text-on-surface">AI sales agent tuned on your products, stock, and brand voice</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">check</span>
+            <span class="font-medium text-on-surface">Unified inbox + live order sheet + carrier connections</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">check</span>
+            <span class="font-medium text-on-surface">Hands-on go-live with our team (see <a class="text-secondary font-bold underline underline-offset-2 hover:no-underline" href="#support">support &amp; setup</a>)</span>
+          </li>
+        </ul>
+        <a class="flex w-full min-h-[52px] items-center justify-center bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#demo">Book a demo to confirm scope</a>
+        <p class="text-center text-xs text-outline mt-4">Final checklist may vary slightly by market and carrier—we confirm everything on the call.</p>
+      </div>
     </div>
   </section>
 
@@ -765,20 +849,11 @@
       var yearEl = document.getElementById('y');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      var state = { step: 1, sent: false, bought: false, shipped: false, dhlRan: false, adsLaunched: false };
-      var maxUnlocked = 1;
-
-      function updateWizardNextIndicators() {
-        document.querySelectorAll('.wizard-next').forEach(function (btn) {
-          var ind = btn.querySelector('.wizard-next-indicator');
-          if (ind) ind.classList.toggle('hidden', btn.disabled);
-        });
-      }
+      var state = { sent: false, bought: false, shipped: false, dhlRan: false, adsLaunched: false };
 
       function syncStep1UI() {
         var idle = document.getElementById('step1-idle');
         var flow = document.getElementById('step1-flow');
-        var nextBtn = document.getElementById('next-from-step1');
         if (!idle || !flow) return;
         if (state.adsLaunched) {
           idle.classList.add('hidden');
@@ -795,14 +870,11 @@
           }
           var chats = document.getElementById('step1-node-chats');
           if (chats) chats.classList.add('step1-chats-active');
-          if (nextBtn) nextBtn.disabled = false;
         } else {
           idle.classList.remove('hidden');
           flow.classList.add('hidden');
           flow.classList.remove('flex');
-          if (nextBtn) nextBtn.disabled = true;
         }
-        updateWizardNextIndicators();
       }
 
       function playStep1Flow() {
@@ -811,7 +883,6 @@
         if (launchBtn) launchBtn.disabled = true;
         var idle = document.getElementById('step1-idle');
         var flow = document.getElementById('step1-flow');
-        var nextBtn = document.getElementById('next-from-step1');
         var caption = document.getElementById('step1-flow-caption');
         var ingest = document.getElementById('step1-ingest');
         var chatsNode = document.getElementById('step1-node-chats');
@@ -833,8 +904,6 @@
           }
           if (chatsNode) chatsNode.classList.add('step1-chats-active');
           if (ingest) ingest.classList.remove('hidden');
-          if (nextBtn) nextBtn.disabled = false;
-          updateWizardNextIndicators();
           return;
         }
         setTimeout(function () {
@@ -860,67 +929,41 @@
         }, 2100);
         setTimeout(function () {
           if (ingest) ingest.classList.remove('hidden');
-          if (nextBtn) nextBtn.disabled = false;
-          updateWizardNextIndicators();
         }, 3600);
       }
 
-      function panels() {
-        return document.querySelectorAll('.wizard-panel');
-      }
-      function dots() {
-        return document.querySelectorAll('#wizard-progress .wizard-dot');
-      }
-
-      function setStep(n, opts) {
-        opts = opts || {};
-        if (n < 1 || n > 4) return;
-        if (opts.fromDot && n > maxUnlocked) return;
-        state.step = n;
-        if (!opts.fromDot) {
-          maxUnlocked = Math.max(maxUnlocked, n);
-        }
-        panels().forEach(function (el) {
-          var sn = el.getAttribute('data-wizard-step');
-          var on = String(sn) === String(n);
-          el.classList.toggle('is-active', on);
-          el.setAttribute('aria-hidden', on ? 'false' : 'true');
-        });
-        dots().forEach(function (d) {
-          var ds = d.getAttribute('data-go-step');
-          var on = String(ds) === String(n);
-          d.classList.toggle('bg-secondary', on);
-          d.classList.toggle('text-white', on);
-          d.classList.toggle('bg-surface-container-high', !on);
-          d.classList.toggle('text-primary-container', !on);
-          d.classList.toggle('is-current', on);
-          if (on) d.setAttribute('aria-current', 'step');
-          else d.removeAttribute('aria-current');
-        });
-        if (n === 4 && state.shipped && !state.dhlRan) {
+      function tryStartDhlSim() {
+        if (!state.shipped || state.dhlRan) return;
+        var el = document.getElementById('journey-carrier');
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < vh * 0.92 && rect.bottom > vh * 0.08) {
           state.dhlRan = true;
           runDhlSim();
         }
-        if (n === 1) syncStep1UI();
-        else updateWizardNextIndicators();
       }
 
-      document.querySelectorAll('[data-go-step]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var t = parseInt(btn.getAttribute('data-go-step'), 10);
-          setStep(t, { fromDot: true });
-        });
-      });
-
-      document.querySelectorAll('[data-next]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var next = state.step + 1;
-          if (state.step === 1 && !state.adsLaunched) return;
-          if (state.step === 2 && !state.bought) return;
-          if (state.step === 3 && !state.shipped) return;
-          setStep(next);
-        });
-      });
+      var carrierSection = document.getElementById('journey-carrier');
+      if (carrierSection && 'IntersectionObserver' in window) {
+        var carrierIo = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) tryStartDhlSim();
+            });
+          },
+          { root: null, threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
+        );
+        carrierIo.observe(carrierSection);
+      } else if (carrierSection) {
+        window.addEventListener(
+          'scroll',
+          function () {
+            tryStartDhlSim();
+          },
+          { passive: true }
+        );
+      }
 
       var btnLaunch = document.getElementById('btn-launch-ads');
       if (btnLaunch) {
@@ -928,11 +971,6 @@
           playStep1Flow();
         });
       }
-      document.querySelectorAll('[data-prev]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          setStep(state.step - 1);
-        });
-      });
 
       var chatInput = document.getElementById('chat-input');
       var btnSend = document.getElementById('btn-send');
@@ -940,8 +978,6 @@
       var aiReply = document.getElementById('ai-reply');
       var btnBuy = document.getElementById('btn-buy');
       var crm = document.getElementById('crm-notification');
-      var nextChat = document.getElementById('next-from-chat');
-
       if (btnSend && aiReply) {
         btnSend.addEventListener('click', function () {
           if (state.sent) return;
@@ -949,14 +985,25 @@
           btnSend.disabled = true;
           var h2 = document.getElementById('hint-step2');
           if (h2) h2.classList.add('hidden');
-          if (typing) typing.classList.remove('hidden');
+          var empty = document.getElementById('chat-empty');
+          var userMsg = document.getElementById('chat-user-message');
+          if (empty) empty.classList.add('hidden');
+          if (userMsg) {
+            userMsg.classList.remove('hidden');
+            userMsg.classList.add('flex');
+            userMsg.setAttribute('aria-hidden', 'false');
+          }
+          setTimeout(function () {
+            if (typing) typing.classList.remove('hidden');
+          }, 380);
           setTimeout(function () {
             if (typing) typing.classList.add('hidden');
             aiReply.classList.remove('hidden');
             aiReply.classList.add('flex');
+            aiReply.setAttribute('aria-hidden', 'false');
             var hb = document.getElementById('hint-step2-buy');
             if (hb) hb.classList.remove('hidden');
-          }, 900);
+          }, 380 + 920);
         });
       }
       if (btnBuy) {
@@ -968,14 +1015,11 @@
           var hb = document.getElementById('hint-step2-buy');
           if (hb) hb.classList.add('hidden');
           if (crm) crm.classList.remove('hidden');
-          if (nextChat) nextChat.disabled = false;
-          updateWizardNextIndicators();
         });
       }
 
       var btnShip = document.getElementById('btn-ship');
       var sheetStatus = document.getElementById('sheet-status');
-      var nextSheet = document.getElementById('next-from-sheet');
       if (btnShip && sheetStatus) {
         btnShip.addEventListener('click', function () {
           if (state.shipped) return;
@@ -986,31 +1030,36 @@
           btnShip.textContent = 'Shipped';
           var h3 = document.getElementById('hint-step3');
           if (h3) h3.classList.add('hidden');
-          if (nextSheet) nextSheet.disabled = false;
-          updateWizardNextIndicators();
           var mir = document.getElementById('wizard-sheet-mirror-status');
           if (mir) mir.textContent = 'SHIPPING';
+          tryStartDhlSim();
         });
       }
 
       function runDhlSim() {
         var log = document.getElementById('dhl-log');
-        var overlay = document.getElementById('dhl-overlay');
+        var confirmEl = document.getElementById('dhl-confirm');
         var statusText = document.getElementById('dhl-status-text');
+        var statusSub = document.getElementById('dhl-status-sub');
         var mir = document.getElementById('wizard-sheet-mirror-status');
         if (!log) return;
+        if (statusText) statusText.textContent = 'Receiving ship trigger…';
+        if (statusSub) statusSub.textContent = 'Order #8843 is already SHIPPING in your sheet.';
         log.innerHTML = '<p class="text-secondary">&gt; Receiving ship trigger…</p>';
         setTimeout(function () {
           log.innerHTML += '<p class="text-secondary">&gt; Creating DHL API request (demo)…</p>';
-          if (statusText) statusText.textContent = 'Generating label…';
+          if (statusText) statusText.textContent = 'Building label…';
+          if (statusSub) statusSub.textContent = 'Carrier integration (simulated).';
         }, 800);
         setTimeout(function () {
-          log.innerHTML += '<p class="text-white font-bold">&gt; Label · #DHL-99283 (demo)</p>';
+          log.innerHTML += '<p class="text-secondary font-bold">&gt; Label · #DHL-99283 (demo)</p>';
           if (statusText) statusText.textContent = 'Courier notified';
+          if (statusSub) statusSub.textContent = 'Pickup window assigned (demo).';
         }, 2200);
         setTimeout(function () {
-          if (overlay) overlay.classList.remove('opacity-0');
+          if (confirmEl) confirmEl.classList.remove('hidden');
           if (statusText) statusText.textContent = 'In transit';
+          if (statusSub) statusSub.textContent = 'Tracking syncs back to the same row.';
         }, 3200);
         setTimeout(function () {
           if (mir) {
@@ -1018,7 +1067,8 @@
             mir.classList.remove('text-secondary');
             mir.classList.add('text-green-700');
           }
-          if (statusText) statusText.textContent = 'Delivered · sheet updated';
+          if (statusText) statusText.textContent = 'Delivered';
+          if (statusSub) statusSub.textContent = 'Sheet row updated—no copy-paste.';
         }, 4800);
       }
 
@@ -1027,10 +1077,6 @@
         finish.addEventListener('click', function () {
           var h4 = document.getElementById('hint-step4');
           if (h4) h4.classList.add('hidden');
-          var el = document.getElementById('outcomes');
-          if (!el) return;
-          var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         });
       }
 
@@ -1050,7 +1096,7 @@
         });
       }
 
-      setStep(1);
+      syncStep1UI();
     })();
   </script>
 </body>
