@@ -765,9 +765,10 @@
           Weekly live session
         </div>
         <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-4">Friday demo · 12:00 PM (EST)</h2>
-        <p class="text-on-surface-variant text-lg">Every Friday we run a live walkthrough of Baztit Commerce—sales workflows on the web, Q&amp;A, and real examples. Register below; we’ll wire this form to our backend next.</p>
+        <p class="text-on-surface-variant text-lg">Every Friday we run a live walkthrough of Baztit Commerce—sales workflows on the web, Q&amp;A, and real examples. Register below; we’ll follow up by email.</p>
       </div>
-      <form class="bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-xl border border-outline-variant/30 text-left space-y-4" id="demo-form" novalidate>
+      <form class="bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-xl border border-outline-variant/30 text-left space-y-4" id="demo-form" action="https://formspree.io/f/xaqlwkyq" method="POST">
+        <input name="_subject" type="hidden" value="Friday demo registration — Baztit Commerce"/>
         <div>
           <label class="block text-sm font-bold text-primary-container mb-1" for="reg-name">Name</label>
           <input class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-name" name="name" type="text" autocomplete="name" required placeholder="Your name"/>
@@ -793,9 +794,9 @@
           <textarea class="w-full rounded-md border-outline-variant bg-white text-base leading-relaxed" id="reg-note" name="note" rows="3" placeholder="Channels you use, order volume, market…"></textarea>
         </div>
         <button class="w-full min-h-[48px] bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" type="submit">Register for your Friday</button>
-        <p class="text-xs text-outline text-center" id="demo-form-hint">Submitting only shows a confirmation for now—server integration is coming.</p>
+        <p class="text-xs text-outline text-center" id="demo-form-hint">We’ll email you to confirm. If something fails, you’ll see an error below.</p>
       </form>
-      <p class="text-center text-sm text-on-surface-variant mt-6" id="demo-success" hidden role="status">Thanks! You’re on the list—we’ll confirm by email once the form is connected.</p>
+      <p class="text-center text-sm text-on-surface-variant mt-6" id="demo-success" hidden role="status" aria-live="polite">Thanks! Your registration was sent—we’ll follow up by email.</p>
     </div>
   </section>
 
@@ -1187,15 +1188,59 @@
       var success = document.getElementById('demo-success');
       fillFridaySessions2026();
       if (form) {
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var submitBtnLabel = submitBtn ? submitBtn.textContent : '';
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           if (!form.checkValidity()) {
             form.reportValidity();
             return;
           }
-          form.setAttribute('hidden', '');
-          if (hint) hint.setAttribute('hidden', '');
-          if (success) success.hidden = false;
+          if (hint) {
+            hint.hidden = false;
+            hint.textContent = 'We’ll email you to confirm. If something fails, you’ll see an error below.';
+            hint.classList.remove('text-error');
+            hint.classList.add('text-outline');
+          }
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+          }
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          })
+            .then(function (response) {
+              if (response.ok) {
+                form.setAttribute('hidden', '');
+                if (hint) hint.setAttribute('hidden', '');
+                if (success) success.hidden = false;
+                return;
+              }
+              return response.json().then(function (data) {
+                var msg = 'Could not send. Please try again or use Telegram / email below.';
+                if (data && data.error) msg = typeof data.error === 'string' ? data.error : (data.error.message || msg);
+                if (hint) {
+                  hint.textContent = msg;
+                  hint.classList.remove('text-outline');
+                  hint.classList.add('text-error');
+                }
+              });
+            })
+            .catch(function () {
+              if (hint) {
+                hint.textContent = 'Network error. Check your connection or contact us via Telegram / email.';
+                hint.classList.remove('text-outline');
+                hint.classList.add('text-error');
+              }
+            })
+            .finally(function () {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitBtnLabel;
+              }
+            });
         });
       }
 
