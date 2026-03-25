@@ -314,7 +314,7 @@
     <div class="max-w-5xl mx-auto px-6 sm:px-8">
       <div class="text-center mb-10 sm:mb-14">
         <h2 id="how-heading" class="font-headline text-3xl sm:text-5xl font-extrabold text-primary-container mb-4">How it works</h2>
-        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Walk the full journey—from traffic to delivery—in four interactive steps. Follow the <strong class="text-primary-container">pulsing dot</strong> on each step, then continue with <strong class="text-primary-container">Next</strong>.</p>
+        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Walk the full journey—from traffic to delivery—in four interactive steps. Follow the <strong class="text-primary-container">pulsing dot</strong> on the action to take; when <strong class="text-primary-container">Next</strong> unlocks, it gets the same dot—press it to continue.</p>
       </div>
 
       <!-- Progress -->
@@ -327,6 +327,7 @@
 
       <!-- Step 1 -->
       <div class="wizard-panel is-active" data-wizard-step="1" aria-hidden="false">
+        <p class="text-on-surface-variant text-sm sm:text-base text-center max-w-2xl mx-auto mb-4 leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Launch ads</strong> and watch the paths draw. When the flow finishes, <strong>Next</strong> lights up—go to Step 2 (AI chat demo).</p>
         <div class="bg-primary-container rounded-2xl p-6 sm:p-8 min-h-[340px] sm:min-h-[400px] flex flex-col items-center justify-center relative shadow-2xl overflow-hidden">
           <div class="absolute inset-0 opacity-20 pointer-events-none">
             <div class="h-full w-full bg-[radial-gradient(#5af8fb_1px,transparent_1px)] [background-size:20px_20px]"></div>
@@ -392,21 +393,28 @@
               </svg>
             </div>
             <p class="text-center text-on-primary-container text-sm max-w-md min-h-[3rem]" id="step1-flow-caption">Visitors land on your site and profiles…</p>
-            <div class="mt-4 px-4 py-2 bg-white/10 rounded-lg backdrop-blur-md border border-white/20 hidden" id="step1-ingest">
-              <code class="text-secondary-fixed text-xs sm:text-sm font-mono tracking-wide">INGEST · ~1.2k sessions / hr · chats warming up (demo)</code>
+            <div class="mt-4 px-4 py-3 bg-white/10 rounded-lg backdrop-blur-md border border-white/20 hidden max-w-md mx-auto" id="step1-ingest">
+              <p class="text-center text-on-primary-container text-xs sm:text-sm leading-relaxed"><strong class="text-secondary-fixed">What this shows:</strong> visits from ads and social land on your site and DMs, then new conversations show up in one inbox. This block is a short recap—numbers aren’t real; it’s a visual demo of the pipeline.</p>
             </div>
           </div>
         </div>
         <p class="text-center text-on-surface-variant mt-6 max-w-xl mx-auto text-sm">Meta / search / social—wherever your buyers discover you, messages land in one pipeline.</p>
         <div class="flex justify-end mt-8">
-          <button type="button" class="wizard-next min-h-[44px] min-w-[120px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-40 disabled:cursor-not-allowed" data-next id="next-from-step1" disabled>Next</button>
+          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[120px] bg-primary-container text-on-primary pr-8 pl-11 rounded-md font-bold hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-40 disabled:cursor-not-allowed" data-next id="next-from-step1" disabled>
+            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 flex h-2.5 w-2.5 hidden" aria-hidden="true">
+              <span class="ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-secondary-fixed ring-2 ring-white/90"></span>
+            </span>
+            Next
+          </button>
         </div>
       </div>
 
       <!-- Step 2 -->
       <div class="wizard-panel" data-wizard-step="2" aria-hidden="true">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 2 · AI chat</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">A shopper writes in—with a photo</h3>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">A shopper writes in—with a photo</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Send</strong>, wait for the AI reply, then tap <strong>Buy now</strong>. After the order is placed, <strong>Next</strong> unlocks—Step 3 is the live order sheet.</p>
         <div class="bg-surface-container-low rounded-2xl p-4 sm:p-6 shadow-xl border border-outline-variant/30 max-w-lg mx-auto flex flex-col min-h-[420px]">
           <div class="flex justify-between items-center mb-4 pb-4 border-b border-outline-variant/40">
             <div class="flex items-center gap-3">
@@ -464,14 +472,21 @@
         </div>
         <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
           <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high order-2 sm:order-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
-          <button type="button" class="wizard-next min-h-[44px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed order-1 sm:order-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-chat" disabled>Next</button>
+          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] bg-primary-container text-on-primary pr-8 pl-11 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed order-1 sm:order-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-chat" disabled>
+            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 flex h-2.5 w-2.5 hidden" aria-hidden="true">
+              <span class="ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-secondary-fixed ring-2 ring-white/90"></span>
+            </span>
+            Next
+          </button>
         </div>
       </div>
 
       <!-- Step 3 -->
       <div class="wizard-panel" data-wizard-step="3" aria-hidden="true">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 3 · Live sheet</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">Orders appear in a familiar spreadsheet</h3>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">Orders appear in a familiar spreadsheet</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> tap <strong>Ship package</strong> on the new order row. When status updates, <strong>Next</strong> unlocks—Step 4 shows carrier handoff and tracking (demo).</p>
         <div class="bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden max-w-3xl mx-auto">
           <div class="bg-green-700 text-white px-4 py-2 flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -522,14 +537,21 @@
         <p class="text-center text-on-surface-variant mt-6 text-sm max-w-xl mx-auto">Click <strong>Ship package</strong> to move the order forward—your team stays in a sheet they already understand.</p>
         <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
           <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
-          <button type="button" class="wizard-next min-h-[44px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-sheet" disabled>Next</button>
+          <button type="button" class="wizard-next relative inline-flex items-center justify-center gap-2 min-h-[44px] bg-primary-container text-on-primary pr-8 pl-11 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-sheet" disabled>
+            <span class="wizard-next-indicator wizard-hint-dot absolute left-3 top-1/2 -translate-y-1/2 flex h-2.5 w-2.5 hidden" aria-hidden="true">
+              <span class="ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-secondary-fixed ring-2 ring-white/90"></span>
+            </span>
+            Next
+          </button>
         </div>
       </div>
 
       <!-- Step 4 -->
       <div class="wizard-panel" data-wizard-step="4" aria-hidden="true">
         <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 4 · Carrier</p>
-        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">DHL picks up—your sheet updates itself</h3>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-4">DHL picks up—your sheet updates itself</h3>
+        <p class="text-on-surface-variant text-sm sm:text-base mb-6 max-w-2xl leading-relaxed"><strong class="text-primary-container">What to do:</strong> watch the log and status update (demo). When you’re done, use <strong>Continue to outcomes</strong> to jump to the summary below—the pulsing dot shows it’s the main exit from this tour.</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
             <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">A shipping request is created for DHL. The courier is notified, the parcel moves out, and tracking flows back—so the row in your sheet moves from <strong>shipping</strong> to <strong>delivered</strong> without manual re-typing.</p>
@@ -723,6 +745,13 @@
       var state = { step: 1, sent: false, bought: false, shipped: false, dhlRan: false, adsLaunched: false };
       var maxUnlocked = 1;
 
+      function updateWizardNextIndicators() {
+        document.querySelectorAll('.wizard-next').forEach(function (btn) {
+          var ind = btn.querySelector('.wizard-next-indicator');
+          if (ind) ind.classList.toggle('hidden', btn.disabled);
+        });
+      }
+
       function syncStep1UI() {
         var idle = document.getElementById('step1-idle');
         var flow = document.getElementById('step1-flow');
@@ -750,6 +779,7 @@
           flow.classList.remove('flex');
           if (nextBtn) nextBtn.disabled = true;
         }
+        updateWizardNextIndicators();
       }
 
       function playStep1Flow() {
@@ -781,6 +811,7 @@
           if (chatsNode) chatsNode.classList.add('step1-chats-active');
           if (ingest) ingest.classList.remove('hidden');
           if (nextBtn) nextBtn.disabled = false;
+          updateWizardNextIndicators();
           return;
         }
         setTimeout(function () {
@@ -807,6 +838,7 @@
         setTimeout(function () {
           if (ingest) ingest.classList.remove('hidden');
           if (nextBtn) nextBtn.disabled = false;
+          updateWizardNextIndicators();
         }, 3600);
       }
 
@@ -847,6 +879,7 @@
           runDhlSim();
         }
         if (n === 1) syncStep1UI();
+        else updateWizardNextIndicators();
       }
 
       document.querySelectorAll('[data-go-step]').forEach(function (btn) {
@@ -916,6 +949,7 @@
           if (hb) hb.classList.add('hidden');
           if (crm) crm.classList.remove('hidden');
           if (nextChat) nextChat.disabled = false;
+          updateWizardNextIndicators();
         });
       }
 
@@ -933,6 +967,7 @@
           var h3 = document.getElementById('hint-step3');
           if (h3) h3.classList.add('hidden');
           if (nextSheet) nextSheet.disabled = false;
+          updateWizardNextIndicators();
           var mir = document.getElementById('wizard-sheet-mirror-status');
           if (mir) mir.textContent = 'SHIPPING';
         });
