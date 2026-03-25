@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <meta content="#001b3d" name="theme-color"/>
+  <title>Baztit Commerce | AI Sales &amp; Order Flow for Growing Retail</title>
+  <meta content="From first ad click to delivered parcel—AI handles chats, orders sync to your sheet, and carriers update automatically. Built for online commerce." name="description"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#006e70",
+            "surface-container-low": "#f3f3f6",
+            "on-secondary-fixed": "#002020",
+            "primary-container": "#001b3d",
+            "on-primary-fixed-variant": "#31476b",
+            "tertiary-fixed-dim": "#c3c7cb",
+            "surface-bright": "#f9f9fc",
+            "surface": "#f9f9fc",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2f3133",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dadadc",
+            "surface-container-highest": "#e2e2e5",
+            "outline-variant": "#c4c6cf",
+            "secondary-fixed-dim": "#2ddbde",
+            "secondary-fixed": "#5af8fb",
+            "on-primary-fixed": "#001b3d",
+            "on-primary-container": "#6f84ac",
+            "primary-fixed-dim": "#b1c7f2",
+            "secondary": "#00696b",
+            "on-secondary-fixed-variant": "#004f51",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#171c1f",
+            "on-background": "#1a1c1e",
+            "secondary-container": "#56f5f8",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#44474e",
+            "surface-variant": "#e2e2e5",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#f0f0f3",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#dfe3e7",
+            "background": "#f9f9fc",
+            "inverse-primary": "#b1c7f2",
+            "on-tertiary-fixed-variant": "#43474b",
+            "on-error-container": "#93000a",
+            "primary": "#000000",
+            "surface-tint": "#495f84",
+            "surface-container-high": "#e8e8ea",
+            "on-surface": "#1a1c1e",
+            "primary-fixed": "#d6e3ff",
+            "outline": "#74777f",
+            "tertiary-container": "#171c1f",
+            "on-tertiary-container": "#808488",
+            "tertiary": "#000000",
+            "surface-container": "#eeeef0"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          animation: {
+            'dash': 'dash 3s linear infinite',
+          },
+          keyframes: {
+            dash: {
+              'to': { 'stroke-dashoffset': '-20' }
+            }
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-nav {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #00696b; border-radius: 10px; }
+    .wizard-panel { display: none; }
+    .wizard-panel.is-active { display: block; }
+    .wizard-dot { transition: background .2s, transform .2s; }
+    .wizard-dot.is-current { transform: scale(1.15); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .animate-bounce, .animate-pulse, .animate-dash { animation: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+  <header class="sticky top-0 z-50 bg-surface/70 glass-nav shadow-sm pt-[env(safe-area-inset-top)]">
+    <nav class="max-w-7xl mx-auto px-6 sm:px-8 py-4">
+      <div class="flex flex-wrap justify-between items-center gap-4">
+        <a class="text-xl font-black text-primary-container tracking-tighter focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#top">Baztit Commerce</a>
+        <div class="hidden md:flex gap-6 lg:gap-8 items-center font-manrope font-bold tracking-tight text-sm">
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#platform">Platform</a>
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#how-it-works">How it works</a>
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#results">Results</a>
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#services">Services</a>
+          <a class="text-on-surface-variant hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm" href="#demo">Demo</a>
+        </div>
+        <a class="bg-primary-container text-on-primary px-5 py-2.5 min-h-[44px] inline-flex items-center rounded-md font-bold text-sm active:scale-95 transition-transform whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href="#demo">Book a demo</a>
+      </div>
+      <div class="md:hidden flex overflow-x-auto gap-2 pt-3 pb-1 -mx-2 px-2 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" aria-label="Section shortcuts">
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#platform">Platform</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#how-it-works">How it works</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#results">Results</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#services">Services</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-surface-container-high text-primary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#demo">Demo</a>
+        <a class="shrink-0 min-h-[44px] inline-flex items-center px-3 py-2 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative pt-20 pb-16 overflow-hidden" id="top">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 z-10">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs tracking-wider uppercase mb-6">
+          Built for online retail &amp; e-commerce
+        </span>
+        <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-container leading-tight tracking-tight mb-6">
+          Stop losing sales to slow replies and <span class="text-secondary">messy order tracking.</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
+          AI handles customer conversations 24/7. Your team manages orders and shipping in one place. Replace scattered tools with one workflow—from ad click to delivered parcel.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a class="text-center w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-4 min-h-[48px] inline-flex items-center justify-center rounded-md font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container" href="#demo">
+            Book a free 30-min demo
+          </a>
+          <div class="flex items-center gap-3 px-2 sm:px-4">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            <span class="text-sm font-semibold text-primary-container">Go live in days, not months</span>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-outline-variant/30">
+          <p class="text-xs font-bold text-outline uppercase tracking-widest mb-4">Channels &amp; carriers</p>
+          <div class="flex flex-wrap gap-6 sm:gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            <span class="font-bold text-sm">Viber / Telegram</span>
+            <span class="font-bold text-sm">WhatsApp / Instagram</span>
+            <span class="font-bold text-sm">DHL &amp; regional post</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative">
+        <div class="bg-surface-container-lowest rounded-xl p-4 shadow-2xl relative overflow-hidden">
+          <img alt="Order and chat dashboard preview" class="rounded-lg w-full h-auto" fetchpriority="high" loading="eager" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdjN0VK0Z0BP5gAnmsJGDUr8JaJBv5uFu8slYGqKXrfRwFggOfBlIwh9h8J6YwIJ9Rc1SRclhdAsk6yHb2i1_iOa_lPqxTYkA0ZBQuoHoFbYLasfLRJmKdld4Grw1jLiTgKPnCfQrQ0gAP7ckrrYsEWPFUJIZ1LsnjAMII_V26ZUft0Y3qtyeDAYLJaTNGD3leujH0DSxWR-UnL2pQrb3KzK36HXph2NlbDIJs-vBIchK2MRUVqPKFK87t5woyI6IjosFjn5XpWtQ"/>
+          <div class="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 bg-primary-container p-4 sm:p-6 rounded-lg text-white shadow-2xl animate-pulse max-w-[min(90%,18rem)]">
+            <p class="text-xs font-bold text-secondary-fixed mb-1">BAZTIT AI SALES</p>
+            <p class="text-sm">"I've placed your order #8842!"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What changes -->
+  <section class="py-20 sm:py-24 bg-surface-container-low" id="results">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 text-center mb-12 sm:mb-16">
+      <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container tracking-tight">What changes on Day 1</h2>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 sm:gap-x-12 gap-y-4 sm:gap-y-6">
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">Manager spends 4–8h/day on chats</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">Max 1h/day on qualified leads only</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">Generic scripts</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">Personalized replies</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">Customer waits hours</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">Reply in 20–30 sec</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">Orders lost in inboxes</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">All in one live sheet</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">3–5 disconnected apps</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">One unified inbox</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <div class="bg-surface-dim/40 p-5 sm:p-6 rounded-lg flex justify-between items-center gap-2">
+        <span class="text-on-surface-variant italic text-sm sm:text-base">15 min to ship</span>
+        <span class="material-symbols-outlined text-outline shrink-0">arrow_forward</span>
+      </div>
+      <div class="bg-surface-container-lowest border-l-4 border-secondary p-5 sm:p-6 rounded-lg flex justify-between items-center shadow-sm gap-2">
+        <span class="font-bold text-primary-container text-sm sm:text-base">Seconds to confirm shipment</span>
+        <span class="material-symbols-outlined text-secondary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="font-headline text-4xl sm:text-5xl font-extrabold text-secondary">+5–10%</div>
+        <p class="text-sm font-bold text-primary-container uppercase mt-2">Conversion lift</p>
+      </div>
+      <div class="text-center">
+        <div class="font-headline text-4xl sm:text-5xl font-extrabold text-secondary">−80%</div>
+        <p class="text-sm font-bold text-primary-container uppercase mt-2">Routine work</p>
+      </div>
+      <div class="text-center">
+        <div class="font-headline text-4xl sm:text-5xl font-extrabold text-secondary">2 sec</div>
+        <p class="text-sm font-bold text-primary-container uppercase mt-2">To trigger ship</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two tools + review -->
+  <section class="py-20 sm:py-24" id="platform">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+      <div class="mb-14 sm:mb-20 text-center">
+        <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container">Two tools. One complete workflow.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+        <div class="bg-surface-container-lowest p-8 sm:p-12 rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-secondary text-4xl">smart_toy</span>
+          </div>
+          <h3 class="font-headline text-2xl font-bold text-primary-container mb-4">Baztit AI Sales Agent</h3>
+          <p class="text-on-surface-variant leading-relaxed">
+            A custom-trained AI that knows your products, stock levels, and brand voice. It handles inquiries on Telegram, WhatsApp, and Instagram 24/7—answering complex questions and capturing orders while you focus on growth.
+          </p>
+        </div>
+        <div class="bg-surface-container-lowest p-8 sm:p-12 rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-secondary text-4xl">inventory_2</span>
+          </div>
+          <h3 class="font-headline text-2xl font-bold text-primary-container mb-4">Order &amp; shipping workspace</h3>
+          <p class="text-on-surface-variant leading-relaxed">
+            Chats become structured orders in one place. Connect carriers (e.g. DHL) so labels and tracking flow back into your sheet—without copy-paste between tabs.
+          </p>
+        </div>
+      </div>
+      <div class="mt-14 sm:mt-16 bg-primary-container p-8 md:p-12 rounded-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+          <img alt="Customer portrait" class="w-20 h-20 rounded-full border-2 border-secondary shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdOHRMTBN7--0_oHn39v_e_VHmocIQ1THWWdlktkqNmClQ1hrKpG4bS5bAzb9p06iBQUT2xJEAtXd_7AxHloPgBFOJkHBOQZMHJQOHy5wEQpmFmN-6tv4rEQU7UNGq8ctwMU5yHVLSfiHGigw8ERXC03RHvwtopPqrQZ5aS65xvGwfZ-HGba6gfRzNLR-XyHuXIqbxTYT6v4faPkPjwWJzfk-PxAb-QAnromW4rreqJJu4bnYHVcvxNhsvhGNoSnfXASrewfcCtBA"/>
+          <blockquote class="text-on-primary-container text-lg sm:text-xl italic font-medium leading-relaxed text-center md:text-left">
+            "We didn't want another CRM label—we wanted fewer hours on chats and zero lost orders. Baztit Commerce tied AI, our sheet, and shipping into one loop."
+            <footer class="mt-4 not-italic text-sm font-bold text-secondary-fixed">— Operations lead, multi-channel retail</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wizard: How it works -->
+  <section class="py-20 sm:py-28 bg-white border-y border-outline-variant/30 overflow-hidden" id="how-it-works" aria-labelledby="how-heading">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8">
+      <div class="text-center mb-10 sm:mb-14">
+        <h2 id="how-heading" class="font-headline text-3xl sm:text-5xl font-extrabold text-primary-container mb-4">How it works</h2>
+        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Walk the full journey—from traffic to delivery—in four interactive steps. Use <strong class="text-primary-container">Next</strong> when you’re ready.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="wizard-progress" role="group" aria-label="Journey steps">
+        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-secondary text-white font-bold text-sm is-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="1" aria-current="step">1</button>
+        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="2">2</button>
+        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="3">3</button>
+        <button type="button" class="wizard-dot min-h-[44px] min-w-[44px] rounded-full bg-surface-container-high text-primary-container font-bold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-go-step="4">4</button>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="wizard-panel is-active" data-wizard-step="1" aria-hidden="false">
+        <div class="bg-primary-container rounded-2xl p-6 sm:p-8 min-h-[320px] sm:min-h-[380px] flex flex-col items-center justify-center relative shadow-2xl overflow-hidden">
+          <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="h-full w-full bg-[radial-gradient(#5af8fb_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          </div>
+          <div class="relative z-10 w-full flex flex-col items-center">
+            <p class="text-secondary-fixed text-xs font-bold uppercase tracking-widest mb-4">Step 1 · Traffic</p>
+            <div class="flex gap-4 mb-6">
+              <span class="material-symbols-outlined text-secondary text-4xl sm:text-5xl animate-bounce">campaign</span>
+              <span class="material-symbols-outlined text-secondary text-4xl sm:text-5xl animate-bounce [animation-delay:0.2s]">language</span>
+              <span class="material-symbols-outlined text-secondary text-4xl sm:text-5xl animate-bounce [animation-delay:0.4s]">share</span>
+            </div>
+            <div class="w-full max-w-md h-20 sm:h-24 relative overflow-hidden">
+              <svg class="w-full h-full" viewBox="0 0 400 100" aria-hidden="true">
+                <path class="animate-dash" d="M0,50 Q100,20 200,50 T400,50" fill="none" stroke="#5af8fb" stroke-dasharray="5 5" stroke-width="2"></path>
+                <circle cx="0" cy="50" r="4" fill="#5af8fb">
+                  <animate attributeName="cx" dur="2s" from="0" repeatCount="indefinite" to="400"></animate>
+                </circle>
+                <circle cx="0" cy="50" r="4" fill="#5af8fb">
+                  <animate attributeName="cx" begin="0.5s" dur="2s" from="0" repeatCount="indefinite" to="400"></animate>
+                </circle>
+                <circle cx="0" cy="50" r="4" fill="#5af8fb">
+                  <animate attributeName="cx" begin="1s" dur="2s" from="0" repeatCount="indefinite" to="400"></animate>
+                </circle>
+              </svg>
+            </div>
+            <p class="mt-6 text-center text-on-primary-container text-sm sm:text-base max-w-md">You launch ads or content—visitors flow to your site and social profiles. Baztit captures those conversations as structured demand.</p>
+            <div class="mt-6 px-4 py-2 bg-white/10 rounded-lg backdrop-blur-md border border-white/20">
+              <code class="text-secondary-fixed text-xs sm:text-sm font-mono tracking-wide">INGEST · ~1.2k sessions / hr (demo)</code>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-on-surface-variant mt-6 max-w-xl mx-auto text-sm">Meta / search / social—wherever your buyers discover you, messages land in one pipeline.</p>
+        <div class="flex justify-end mt-8">
+          <button type="button" class="wizard-next min-h-[44px] min-w-[120px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="wizard-panel" data-wizard-step="2" aria-hidden="true">
+        <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 2 · AI chat</p>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">A shopper writes in—with a photo</h3>
+        <div class="bg-surface-container-low rounded-2xl p-4 sm:p-6 shadow-xl border border-outline-variant/30 max-w-lg mx-auto flex flex-col min-h-[420px]">
+          <div class="flex justify-between items-center mb-4 pb-4 border-b border-outline-variant/40">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xs font-black">BZ</div>
+              <div>
+                <p class="text-sm font-bold">Baztit AI Sales</p>
+                <p class="text-xs text-secondary font-semibold">Online · Active</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline">more_horiz</span>
+          </div>
+          <div class="flex-grow space-y-4 mb-4 custom-scrollbar overflow-y-auto px-1 max-h-64" id="chat-scroll">
+            <div class="flex justify-start">
+              <div class="bg-surface-container-lowest p-3 rounded-lg rounded-tl-none max-w-[90%] shadow-sm border border-outline-variant/20">
+                <img alt="Product reference photo" class="rounded mb-2 w-full h-28 sm:h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHN2eW040VT_gCKCvPrXwoUdMEKeyqHbbRaebKO4ZFZMKnA2b_nz_vD8DFiGW46QNkfOPLhQJDv7PQ8VQ0ZC3zpyQ4H_fsohy1EVwf3d9SM8LfpDRl_-NZ-MNGLXo9uwpImKQgSUP4t-rINkJNwtIp9KqMCqok-Y1p7EvmP8IhsDjJrIem1ReVpCIGOvIv-ZIj8v5wkXIpDi3lGZCUA5ohSNKtX1gXtNGJTTXCTUrQHML-D9bZ__mvsc2MeUQg3kl1_gUKFckPD8Y"/>
+                <p class="text-sm">Hi! Do you have something like this in stock? Ship to London?</p>
+              </div>
+            </div>
+            <div id="chat-typing" class="hidden flex justify-start">
+              <div class="bg-white px-4 py-2 rounded-lg text-xs text-on-surface-variant border border-outline-variant/30">AI is typing…</div>
+            </div>
+            <div class="hidden flex justify-end" id="ai-reply">
+              <div class="bg-primary-container text-white p-3 rounded-lg rounded-tr-none max-w-[90%] shadow-sm">
+                <p class="text-sm">Yes—we have 4 units of the Minimalist White Watch. Delivery to London: 2–3 business days via DHL. Want me to reserve one?</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="text-[10px] bg-white/10 px-2 py-1 rounded">White Watch · $129</span>
+                </div>
+                <button type="button" class="mt-3 w-full min-h-[44px] bg-secondary text-on-secondary py-2 rounded font-bold text-xs uppercase tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" id="btn-buy">Buy now</button>
+              </div>
+            </div>
+            <div id="crm-notification" class="hidden rounded-lg border border-secondary bg-secondary-container/30 p-3 text-xs">
+              <div class="flex items-center gap-2 font-bold text-primary-container">
+                <span class="material-symbols-outlined text-secondary text-lg">notifications_active</span>
+                New lead in CRM · Sarah J. · “White Watch”
+              </div>
+              <p class="mt-1 text-on-surface-variant">Your manager gets an instant alert—same second the shopper commits.</p>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-auto pt-2">
+            <input class="flex-grow min-h-[44px] border border-outline-variant bg-white rounded-md px-3 text-base focus:ring-2 focus:ring-secondary" id="chat-input" type="text" value="Do you have something like this in stock?" readonly aria-readonly="true"/>
+            <button type="button" class="bg-secondary text-white min-h-[44px] min-w-[44px] shrink-0 rounded-md hover:opacity-90 transition-opacity inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container" id="btn-send" aria-label="Send message">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
+          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high order-2 sm:order-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
+          <button type="button" class="wizard-next min-h-[44px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed order-1 sm:order-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-chat" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="wizard-panel" data-wizard-step="3" aria-hidden="true">
+        <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 3 · Live sheet</p>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">Orders appear in a familiar spreadsheet</h3>
+        <div class="bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden max-w-3xl mx-auto">
+          <div class="bg-green-700 text-white px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">table_chart</span>
+              <span class="text-xs font-bold uppercase">Baztit Order Sheet (demo)</span>
+            </div>
+            <span class="text-[10px] opacity-90">Synced</span>
+          </div>
+          <div class="overflow-x-auto touch-pan-x -mx-1 px-1 [scrollbar-width:thin]">
+            <table class="w-full text-left text-xs min-w-[500px]">
+              <thead class="bg-surface-container-high font-bold border-b">
+                <tr>
+                  <th class="p-3">Order</th>
+                  <th class="p-3">Customer</th>
+                  <th class="p-3">Item</th>
+                  <th class="p-3">Amount</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b bg-green-50/50">
+                  <td class="p-3 font-mono">#8843</td>
+                  <td class="p-3">Sarah J.</td>
+                  <td class="p-3 italic">White Watch</td>
+                  <td class="p-3">$129.00</td>
+                  <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-bold" id="sheet-status">PAID</span></td>
+                  <td class="p-3">
+                    <button type="button" class="bg-primary-container text-white min-h-[44px] min-w-[96px] px-3 py-2 rounded font-bold text-[11px] hover:bg-secondary transition-colors disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="btn-ship">Ship package</button>
+                  </td>
+                </tr>
+                <tr class="border-b opacity-50">
+                  <td class="p-3 font-mono">#8842</td>
+                  <td class="p-3">Michael R.</td>
+                  <td class="p-3 italic">Tech bag</td>
+                  <td class="p-3">$85.00</td>
+                  <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">DELIVERED</span></td>
+                  <td class="p-3">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="text-center text-on-surface-variant mt-6 text-sm max-w-xl mx-auto">Click <strong>Ship package</strong> to move the order forward—your team stays in a sheet they already understand.</p>
+        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
+          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
+          <button type="button" class="wizard-next min-h-[44px] bg-primary-container text-on-primary px-8 py-3 rounded-md font-bold hover:bg-black transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-next id="next-from-sheet" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="wizard-panel" data-wizard-step="4" aria-hidden="true">
+        <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 4 · Carrier</p>
+        <h3 class="font-headline text-2xl sm:text-3xl font-bold text-primary-container mb-6">DHL picks up—your sheet updates itself</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">A shipping request is created for DHL. The courier is notified, the parcel moves out, and tracking flows back—so the row in your sheet moves from <strong>shipping</strong> to <strong>delivered</strong> without manual re-typing.</p>
+            <div class="space-y-1 font-mono text-[11px] sm:text-xs bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/30 max-h-40 overflow-y-auto custom-scrollbar" id="dhl-log">
+              <p class="text-outline">&gt; System: waiting for ship trigger…</p>
+            </div>
+            <div class="mt-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 text-sm" id="sheet-mirror">
+              <span class="font-bold text-primary-container">Order #8843</span>
+              <span class="text-on-surface-variant"> · Status: </span>
+              <span class="font-bold text-secondary" id="wizard-sheet-mirror-status">READY TO SHIP</span>
+            </div>
+          </div>
+          <div class="bg-surface-container-highest rounded-2xl p-8 flex flex-col items-center justify-center relative shadow-xl overflow-hidden min-h-[300px]">
+            <div class="relative z-10 text-center" id="dhl-visual">
+              <div class="w-28 h-28 sm:w-32 sm:h-32 bg-[#FFCC00] rounded-lg flex items-center justify-center mb-5 shadow-lg border-4 border-[#D40511]/20 mx-auto">
+                <span class="material-symbols-outlined text-[#D40511] text-5xl sm:text-6xl">local_shipping</span>
+              </div>
+              <div class="bg-[#D40511] text-white px-5 py-1.5 rounded-full font-black text-sm tracking-wide">DHL · demo</div>
+              <p class="mt-4 text-primary-container font-bold animate-pulse text-sm" id="dhl-status-text">Ready for pickup</p>
+            </div>
+            <div class="absolute inset-0 bg-secondary/10 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none" id="dhl-overlay">
+              <div class="bg-white p-5 rounded-xl shadow-2xl border-2 border-secondary text-center mx-4">
+                <span class="material-symbols-outlined text-secondary text-4xl mb-1">task_alt</span>
+                <p class="font-bold text-primary-container uppercase tracking-widest text-sm">Request confirmed</p>
+                <p class="text-xs text-outline mt-1">Courier notified (demo)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8 items-stretch sm:items-center">
+          <button type="button" class="wizard-prev min-h-[44px] text-on-surface-variant font-bold px-4 py-2 border border-outline-variant rounded-md hover:bg-surface-container-high focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-prev>Back</button>
+          <button type="button" class="min-h-[44px] bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-3 rounded-md font-bold shadow-lg hover:shadow-xl transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container" id="wizard-finish">Continue to outcomes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="py-20 sm:py-24 bg-surface-container-low" id="outcomes">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+      <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-6">What you get in the end</h2>
+      <p class="text-on-surface-variant text-lg leading-relaxed">
+        Faster replies, fewer dropped orders, a single place for leads and fulfillment, and automatic status updates as carriers move parcels. Baztit Commerce is tuned for <strong class="text-primary-container">online product sales</strong>—and works well for <strong class="text-primary-container">service businesses</strong> with a high volume of inbound messages too.
+      </p>
+    </div>
+  </section>
+
+  <!-- Demo Friday + form -->
+  <section class="py-20 sm:py-24 bg-secondary-container/20" id="demo">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary text-white font-bold text-xs uppercase mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
+          Weekly live session
+        </div>
+        <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container mb-4">Friday demo · 12:00 PM (EST)</h2>
+        <p class="text-on-surface-variant text-lg">Every Friday we run a live walkthrough of Baztit Commerce—sales workflows on the web, Q&amp;A, and real examples. Register below; we’ll wire this form to our backend next.</p>
+      </div>
+      <form class="bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-xl border border-outline-variant/30 text-left space-y-4" id="demo-form" novalidate>
+        <div>
+          <label class="block text-sm font-bold text-primary-container mb-1" for="reg-name">Name</label>
+          <input class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-name" name="name" type="text" autocomplete="name" required placeholder="Your name"/>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-primary-container mb-1" for="reg-email">Work email</label>
+          <input class="w-full min-h-[44px] rounded-md border-outline-variant bg-white text-base" id="reg-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"/>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-primary-container mb-1" for="reg-note">What should we cover? (optional)</label>
+          <textarea class="w-full rounded-md border-outline-variant bg-white text-base leading-relaxed" id="reg-note" name="note" rows="3" placeholder="Channels you use, order volume, market…"></textarea>
+        </div>
+        <button class="w-full min-h-[48px] bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" type="submit">Register for the next Friday</button>
+        <p class="text-xs text-outline text-center" id="demo-form-hint">Submitting only shows a confirmation for now—server integration is coming.</p>
+      </form>
+      <p class="text-center text-sm text-on-surface-variant mt-6" id="demo-success" hidden role="status">Thanks! You’re on the list—we’ll confirm by email once the form is connected.</p>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="py-20 sm:py-24 bg-primary-container text-white" id="support">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-headline text-3xl sm:text-4xl font-extrabold mb-6 leading-tight">Custom setup &amp; ongoing support</h2>
+        <p class="text-on-primary-container text-lg leading-relaxed mb-6">We configure Baztit Commerce for each client—integrations, AI training on your catalog, and carrier rules. You don’t need to worry that “everything will keep working”: we stay available for technical support as you grow.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary">engineering</span>
+            <span class="font-bold text-sm">Hands-on implementation</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary">support_agent</span>
+            <span class="font-bold text-sm">Support when you need it</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/5 p-6 sm:p-8 rounded-2xl border border-white/10 backdrop-blur-sm space-y-5">
+        <div class="flex gap-4">
+          <div class="w-11 h-11 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-secondary">dataset</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Product &amp; policy data</h4>
+            <p class="text-on-primary-container text-sm">We map SKUs, pricing, and how you want the AI to sound.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-11 h-11 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-secondary">hub</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Channels &amp; carriers</h4>
+            <p class="text-on-primary-container text-sm">Chat apps and shipping—connected to your workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-20 sm:py-24 bg-surface-container-lowest" id="services">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+      <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container text-center mb-4">Beyond the core product</h2>
+      <p class="text-center text-on-surface-variant max-w-2xl mx-auto mb-12 sm:mb-16">We can also help with growth and storefront work—if your project needs it.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="group bg-surface-container-low p-8 sm:p-10 rounded-2xl border border-outline-variant/30 hover:border-secondary/50 transition-all">
+          <span class="material-symbols-outlined text-5xl text-secondary mb-5 group-hover:scale-110 transition-transform inline-block">ads_click</span>
+          <h3 class="font-headline text-2xl font-bold text-primary-container mb-3">Advertising</h3>
+          <p class="text-on-surface-variant leading-relaxed">Campaigns in social and search—so the traffic feeding your AI and inbox is intentional and measurable.</p>
+        </div>
+        <div class="group bg-surface-container-low p-8 sm:p-10 rounded-2xl border border-outline-variant/30 hover:border-secondary/50 transition-all">
+          <span class="material-symbols-outlined text-5xl text-secondary mb-5 group-hover:scale-110 transition-transform inline-block">code_blocks</span>
+          <h3 class="font-headline text-2xl font-bold text-primary-container mb-3">Sites &amp; online stores</h3>
+          <p class="text-on-surface-variant leading-relaxed">Landing pages and e-commerce builds that plug into the same Baztit stack when you need a new storefront.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience -->
+  <section class="py-16 sm:py-20 bg-surface">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+      <h2 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary-container mb-4">Who it’s for</h2>
+      <p class="text-on-surface-variant leading-relaxed">Optimized for <strong class="text-primary-container">merchants selling goods online</strong>. Also a strong fit for <strong class="text-primary-container">teams that sell services</strong> or handle <strong class="text-primary-container">large inbound volumes</strong>—same pipeline: capture, qualify, route, fulfill.</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 sm:py-28 bg-primary-container text-white text-center relative overflow-hidden" id="contact">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnSVkSoVa7fnUBFBxGg01zXvpkKQUdCmwYFFovw-h1MWpz4Gia_Yw_QCw6jbsTKHt0IdhDlQ5raNGGkV6vcwBqFt4rRghTTakqc75ZAwvu9b78HLHtBowNqKer2O_YtxFYDDxsGs5RdyBbO7F7WrgMzcdyOthc4vEGlkoZ98WC0n3YoMn01cdpkxUVUF6ayxMvvfsq8T18bjjjpMxqlVpU7rc3bZunmoDxkjHV_74qELGjhzAu0pCPmID0blenidFrfbhW9ECnd80"/>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 relative z-10">
+      <h2 class="font-headline text-3xl sm:text-5xl font-extrabold mb-6">Book the Friday session—or talk to us now</h2>
+      <p class="text-on-primary-container text-lg mb-10 max-w-2xl mx-auto">Use the registration form above for the weekly demo, or reach out directly to discuss a tailored setup.</p>
+      <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-12">
+        <a class="inline-flex items-center justify-center min-h-[48px] w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-4 rounded-md font-bold text-lg shadow-xl hover:scale-[1.02] transition-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href="#demo">Register for Friday (EST)</a>
+        <a class="inline-flex items-center justify-center min-h-[48px] w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/25 px-8 py-4 rounded-md font-bold text-lg hover:bg-white/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href="https://t.me/volknick" target="_blank" rel="noopener noreferrer">Telegram @volknick</a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8 sm:gap-10 text-sm font-semibold">
+        <a class="text-secondary-fixed hover:underline" href="mailto:progprogect@gmail.com">progprogect@gmail.com</a>
+        <a class="text-secondary-fixed hover:underline" href="https://wa.me/375255092206" target="_blank" rel="noopener noreferrer">WhatsApp +375 25 509-22-06</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-primary-container border-t border-on-primary-container/10 text-surface-variant pb-[env(safe-area-inset-bottom)]">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 px-8 py-12 w-full max-w-7xl mx-auto">
+      <div class="text-lg font-bold text-surface">Baztit Commerce</div>
+      <div class="flex flex-wrap gap-6 justify-center text-sm">
+        <a class="hover:text-secondary-fixed transition-colors" href="mailto:progprogect@gmail.com">Email</a>
+        <a class="hover:text-secondary-fixed transition-colors" href="https://t.me/volknick" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="hover:text-secondary-fixed transition-colors" href="https://wa.me/375255092206" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <p class="text-xs text-on-primary-container/80">© <span id="y"></span> Baztit Commerce. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var yearEl = document.getElementById('y');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      var state = { step: 1, sent: false, bought: false, shipped: false, dhlRan: false };
+      var maxUnlocked = 1;
+
+      function panels() {
+        return document.querySelectorAll('.wizard-panel');
+      }
+      function dots() {
+        return document.querySelectorAll('#wizard-progress .wizard-dot');
+      }
+
+      function setStep(n, opts) {
+        opts = opts || {};
+        if (n < 1 || n > 4) return;
+        if (opts.fromDot && n > maxUnlocked) return;
+        state.step = n;
+        if (!opts.fromDot) {
+          maxUnlocked = Math.max(maxUnlocked, n);
+        }
+        panels().forEach(function (el) {
+          var sn = el.getAttribute('data-wizard-step');
+          var on = String(sn) === String(n);
+          el.classList.toggle('is-active', on);
+          el.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        dots().forEach(function (d) {
+          var ds = d.getAttribute('data-go-step');
+          var on = String(ds) === String(n);
+          d.classList.toggle('bg-secondary', on);
+          d.classList.toggle('text-white', on);
+          d.classList.toggle('bg-surface-container-high', !on);
+          d.classList.toggle('text-primary-container', !on);
+          d.classList.toggle('is-current', on);
+          if (on) d.setAttribute('aria-current', 'step');
+          else d.removeAttribute('aria-current');
+        });
+        if (n === 4 && state.shipped && !state.dhlRan) {
+          state.dhlRan = true;
+          runDhlSim();
+        }
+      }
+
+      document.querySelectorAll('[data-go-step]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var t = parseInt(btn.getAttribute('data-go-step'), 10);
+          setStep(t, { fromDot: true });
+        });
+      });
+
+      document.querySelectorAll('[data-next]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var next = state.step + 1;
+          if (state.step === 2 && !state.bought) return;
+          if (state.step === 3 && !state.shipped) return;
+          setStep(next);
+        });
+      });
+      document.querySelectorAll('[data-prev]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setStep(state.step - 1);
+        });
+      });
+
+      var chatInput = document.getElementById('chat-input');
+      var btnSend = document.getElementById('btn-send');
+      var typing = document.getElementById('chat-typing');
+      var aiReply = document.getElementById('ai-reply');
+      var btnBuy = document.getElementById('btn-buy');
+      var crm = document.getElementById('crm-notification');
+      var nextChat = document.getElementById('next-from-chat');
+
+      if (btnSend && aiReply) {
+        btnSend.addEventListener('click', function () {
+          if (state.sent) return;
+          state.sent = true;
+          btnSend.disabled = true;
+          if (typing) typing.classList.remove('hidden');
+          setTimeout(function () {
+            if (typing) typing.classList.add('hidden');
+            aiReply.classList.remove('hidden');
+            aiReply.classList.add('flex');
+          }, 900);
+        });
+      }
+      if (btnBuy) {
+        btnBuy.addEventListener('click', function () {
+          if (state.bought) return;
+          state.bought = true;
+          btnBuy.textContent = 'Order placed';
+          btnBuy.disabled = true;
+          if (crm) crm.classList.remove('hidden');
+          if (nextChat) nextChat.disabled = false;
+        });
+      }
+
+      var btnShip = document.getElementById('btn-ship');
+      var sheetStatus = document.getElementById('sheet-status');
+      var nextSheet = document.getElementById('next-from-sheet');
+      if (btnShip && sheetStatus) {
+        btnShip.addEventListener('click', function () {
+          if (state.shipped) return;
+          state.shipped = true;
+          sheetStatus.textContent = 'SHIPPING';
+          sheetStatus.className = 'bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold';
+          btnShip.disabled = true;
+          btnShip.textContent = 'Shipped';
+          if (nextSheet) nextSheet.disabled = false;
+          var mir = document.getElementById('wizard-sheet-mirror-status');
+          if (mir) mir.textContent = 'SHIPPING';
+        });
+      }
+
+      function runDhlSim() {
+        var log = document.getElementById('dhl-log');
+        var overlay = document.getElementById('dhl-overlay');
+        var statusText = document.getElementById('dhl-status-text');
+        var mir = document.getElementById('wizard-sheet-mirror-status');
+        if (!log) return;
+        log.innerHTML = '<p class="text-secondary">&gt; Receiving ship trigger…</p>';
+        setTimeout(function () {
+          log.innerHTML += '<p class="text-secondary">&gt; Creating DHL API request (demo)…</p>';
+          if (statusText) statusText.textContent = 'Generating label…';
+        }, 800);
+        setTimeout(function () {
+          log.innerHTML += '<p class="text-white font-bold">&gt; Label · #DHL-99283 (demo)</p>';
+          if (statusText) statusText.textContent = 'Courier notified';
+        }, 2200);
+        setTimeout(function () {
+          if (overlay) overlay.classList.remove('opacity-0');
+          if (statusText) statusText.textContent = 'In transit';
+        }, 3200);
+        setTimeout(function () {
+          if (mir) {
+            mir.textContent = 'DELIVERED';
+            mir.classList.remove('text-secondary');
+            mir.classList.add('text-green-700');
+          }
+          if (statusText) statusText.textContent = 'Delivered · sheet updated';
+        }, 4800);
+      }
+
+      var finish = document.getElementById('wizard-finish');
+      if (finish) {
+        finish.addEventListener('click', function () {
+          var el = document.getElementById('outcomes');
+          if (!el) return;
+          var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+      }
+
+      var form = document.getElementById('demo-form');
+      var hint = document.getElementById('demo-form-hint');
+      var success = document.getElementById('demo-success');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          form.setAttribute('hidden', '');
+          if (hint) hint.setAttribute('hidden', '');
+          if (success) success.hidden = false;
+        });
+      }
+
+      setStep(1);
+    })();
+  </script>
+</body>
+</html>

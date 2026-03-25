@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editorial Intelligence | AI CRM &amp; Order Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#000000",
+              "on-primary-fixed-variant": "#31476b",
+              "on-surface-variant": "#44474e",
+              "tertiary": "#000000",
+              "surface-container-low": "#f3f3f6",
+              "primary-fixed-dim": "#b1c7f2",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#c4c6cf",
+              "secondary-container": "#56f5f8",
+              "inverse-primary": "#b1c7f2",
+              "primary-fixed": "#d6e3ff",
+              "on-secondary-fixed": "#002020",
+              "on-primary-fixed": "#001b3d",
+              "tertiary-fixed-dim": "#c3c7cb",
+              "surface-tint": "#495f84",
+              "on-tertiary-fixed-variant": "#43474b",
+              "on-background": "#1a1c1e",
+              "on-secondary-fixed-variant": "#004f51",
+              "inverse-surface": "#2f3133",
+              "surface-variant": "#e2e2e5",
+              "background": "#f9f9fc",
+              "surface-container-high": "#e8e8ea",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "outline": "#74777f",
+              "surface-bright": "#f9f9fc",
+              "secondary": "#00696b",
+              "secondary-fixed": "#5af8fb",
+              "tertiary-fixed": "#dfe3e7",
+              "surface-container-highest": "#e2e2e5",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#006e70",
+              "on-tertiary-container": "#808488",
+              "on-tertiary-fixed": "#171c1f",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#6f84ac",
+              "surface-container": "#eeeef0",
+              "secondary-fixed-dim": "#2ddbde",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "on-surface": "#1a1c1e",
+              "on-error-container": "#93000a",
+              "surface": "#f9f9fc",
+              "primary-container": "#001b3d",
+              "tertiary-container": "#171c1f",
+              "surface-dim": "#dadadc",
+              "inverse-on-surface": "#f0f0f3"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(24px);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(0,27,61,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-extrabold tracking-tighter text-[#001B3D]">
+                Editorial Intelligence
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-manrope font-bold tracking-tight text-[#00696b] border-b-2 border-[#00696b] transition-colors duration-300" href="#how-it-works">How It Works</a>
+<a class="font-manrope font-bold tracking-tight text-[#001B3D] hover:text-[#00696b] transition-colors duration-300" href="#demo">Demo</a>
+<a class="font-manrope font-bold tracking-tight text-[#001B3D] hover:text-[#00696b] transition-colors duration-300" href="#support">Support</a>
+<a class="font-manrope font-bold tracking-tight text-[#001B3D] hover:text-[#00696b] transition-colors duration-300" href="#services">Services</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 text-[#001B3D] font-bold scale-95 active:scale-90 transition-transform">Login</button>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-md font-bold scale-95 active:scale-90 transition-transform shadow-lg">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs tracking-widest uppercase mb-6">
+                    Lifetime Access Available
+                </span>
+<h1 class="font-headline font-extrabold text-5xl lg:text-7xl text-primary-container leading-tight tracking-tight mb-8">
+                    Stop Lost Sales. <br/><span class="text-secondary">Save 40+ Hours</span> Monthly.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                    The architectural CRM for high-volume retailers. Automate lead capture, customer service, and logistics through one high-trust intelligence framework.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-4 rounded-md font-bold text-lg shadow-xl hover:shadow-2xl transition-all">
+                        Join Friday Demo
+                    </button>
+<button class="border-2 border-primary-container text-primary-container px-8 py-4 rounded-md font-bold text-lg hover:bg-primary-container hover:text-white transition-all">
+                        View Portfolio
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="rounded-xl overflow-hidden shadow-2xl bg-surface-container-lowest p-4">
+<img alt="Analytics Dashboard" class="rounded-lg w-full object-cover aspect-square" data-alt="Modern minimalist data dashboard showing upward growth trends and sales metrics with deep navy and teal accents on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6TkLm5627-h9Ggj8AyDsX4BHGYSViJfMRFLf1gTpb5TnZ3YT7TYG731PbnjkvleVh83YM4KO-6l2Z1qHfLe2KQ6LFNQdL-e3OIczZWpTyJdv5wZ1B81m6GFDuhhLTfP6I1hLPidsPvnAbErKWO-WptIWdX9fAa0JFw9iI1p4gXR2YFGIbTX5EQ6Fo_OISr43Z6PMkAeeNMuJwPX7vTnyTe6EP--HW5GkirzK_quUWiwcz6IGQk5EWrBATAPz8XeonhhHm-NQb-zQ"/>
+</div>
+<!-- Floating Card -->
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-2xl border border-secondary/10 max-w-xs">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-bold text-primary-container">High-Trust Architecture</span>
+</div>
+<p class="text-sm text-on-surface-variant">Zero leakage in your sales funnel. Guaranteed.</p>
+</div>
+</div>
+</div>
+</header>
+<!-- How It Works Section -->
+<section class="py-24 bg-surface-container-low" id="how-it-works">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="font-headline font-extrabold text-4xl text-primary-container mb-4">The Interactive Journey</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">From click to shipment—witness how Editorial Intelligence orchestrates your entire business lifecycle.</p>
+</div>
+<!-- Steps Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-secondary/20">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">ads_click</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">1. Traffic Inflow</h3>
+<p class="text-sm text-on-surface-variant mb-6">Real-time tracking of Meta and Google Ads performance directly into your ledger.</p>
+<div class="bg-surface-container p-4 rounded-lg">
+<code class="text-[10px] text-on-primary-container block font-mono">
+                            GET /analytics/pixel<br/>
+                            SOURCE: Meta_Ads_Summer<br/>
+                            STATUS: 200 OK<br/>
+                            CONV: 4.2%
+                        </code>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="lg:col-span-1 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">chat</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">2. AI Concierge</h3>
+<div class="space-y-3">
+<div class="flex flex-col items-end">
+<div class="bg-primary-container text-white text-[11px] p-2 rounded-lg rounded-tr-none max-w-[80%]">
+                                Do you have this in blue? [Image]
+                            </div>
+</div>
+<div class="flex flex-col items-start">
+<div class="bg-secondary-container text-on-secondary-container text-[11px] p-2 rounded-lg rounded-tl-none max-w-[80%]">
+                                Yes! We have 4 left in stock.
+                                <button class="mt-2 block w-full bg-secondary text-white py-1 rounded font-bold text-[9px]">Order Now</button>
+</div>
+</div>
+<div class="flex justify-center mt-2">
+<span class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold">New Lead in CRM!</span>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">table_chart</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">3. Precision CRM</h3>
+<p class="text-sm text-on-surface-variant mb-4">Your Google Sheet updates instantly. Total transparency.</p>
+<div class="border rounded border-outline-variant overflow-hidden">
+<table class="w-full text-[10px] text-left">
+<tbody><tr class="bg-surface-container-high font-bold">
+<th class="p-1">Name</th>
+<th class="p-1">Status</th>
+</tr>
+<tr>
+<td class="p-1 border-t">Sarah J.</td>
+<td class="p-1 border-t"><span class="text-green-600 font-bold">PAID</span></td>
+</tr>
+</tbody></table>
+<button class="w-full bg-primary-container text-white py-1.5 text-[10px] font-bold">Process Shipment</button>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">local_shipping</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">4. Final Mile</h3>
+<p class="text-sm text-on-surface-variant mb-4">Direct DHL integration handles the rest of the logistics.</p>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-8 h-8 rounded bg-[#FFCC00] flex items-center justify-center font-black text-xs">DHL</div>
+<div class="flex-1 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-secondary"></div>
+</div>
+</div>
+<p class="text-[10px] font-bold text-secondary text-right">SHIPPED</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Support & Audience Section -->
+<section class="py-24 max-w-7xl mx-auto px-8" id="support">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline font-extrabold text-4xl text-primary-container mb-6 leading-tight">
+                    Custom Setup. <br/>Full Technical Support.
+                </h2>
+<p class="text-lg text-on-surface-variant mb-8 leading-relaxed">
+                    We don't just hand you software; we architect your solution. Every client receives a custom-mapped system integration with dedicated technical oversight.
+                </p>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<div>
+<p class="font-bold text-primary-container">Bespoke Integration</p>
+<p class="text-sm text-on-surface-variant">We connect your current stack (Meta, Shopify, DHL) for you.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<div>
+<p class="font-bold text-primary-container">The Target Audience</p>
+<p class="text-sm text-on-surface-variant">Perfect for E-commerce retailers and high-volume service agencies.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest flex items-end">
+<img alt="Professional consultant" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Professional woman looking confidently at the camera in a modern bright office setting, soft professional lighting, high-end editorial feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGI9ZtbekiQpzYQZIz0YoxBXreXuQfaYGxrH95DYEE3rJTCxFSgrvNxM9AdNAkzyQjrUo12LN-JnoDzNnLPmSWD5rYfTP9KmTuusTCkEXRwrqbZCcbf4HmBwCosHnfJMt2ApoeaZZMaH7M7vH8_NFDuh59oKIjjbCOHRB_AGeQ2_dm4HxNT_0SxVFkKv84k3e2ex7OheUwt1cXGUnnfjADVfFBJDJ01ap7B7WBm4IbuWi4BIuS-vraiwP36k6RKNPcq3DWVygfUCI"/>
+</div>
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-primary-container mt-8 flex flex-col justify-center p-8 text-white">
+<p class="font-headline font-bold text-3xl mb-4">40+</p>
+<p class="text-on-primary-container uppercase text-xs tracking-widest font-bold">Hours Saved/Week</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Additional Services (Bento Style) -->
+<section class="py-24 bg-primary-container text-white" id="services">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="font-headline font-extrabold text-4xl mb-4">Ecosystem Services</h2>
+<p class="text-on-primary-container">Extend your reach with our premium growth services.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="group p-10 bg-white/5 border border-white/10 rounded-xl hover:bg-secondary/10 transition-all cursor-default">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6">campaign</span>
+<h3 class="font-headline font-bold text-2xl mb-4">Advertising Management</h3>
+<p class="text-on-primary-container leading-relaxed mb-6">Full-scale Social and Search campaign management. We don't just manage clicks; we optimize for CRM-verified revenue.</p>
+<button class="text-secondary-fixed font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Inquire Now <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="group p-10 bg-white/5 border border-white/10 rounded-xl hover:bg-secondary/10 transition-all cursor-default">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6">code_blocks</span>
+<h3 class="font-headline font-bold text-2xl mb-4">Custom Web Development</h3>
+<p class="text-on-primary-container leading-relaxed mb-6">High-performance e-commerce sites and landing pages built for one-click conversions and total CRM compatibility.</p>
+<button class="text-secondary-fixed font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Inquire Now <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-24 bg-surface text-center" id="demo">
+<div class="max-w-3xl mx-auto px-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary rounded-full font-bold text-sm mb-8">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                Next Session: Friday @ 12:00 PM
+            </div>
+<h2 class="font-headline font-extrabold text-5xl text-primary-container mb-6 tracking-tight">Join Our Live Demo</h2>
+<p class="text-xl text-on-surface-variant mb-12">Witness the "Kinetic Ledger" system live. We'll answer technical questions and show real-time order processing.</p>
+<button class="bg-primary-container text-white px-10 py-5 rounded-md font-bold text-xl shadow-2xl hover:bg-black transition-all mb-16">
+                Register for Webinar
+            </button>
+<div class="pt-12 border-t border-surface-container-highest">
+<p class="font-bold text-on-surface-variant mb-6 uppercase tracking-widest text-xs">Direct Support Channels</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="flex items-center gap-2 text-primary-container font-bold hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">send</span> Telegram
+                    </a>
+<a class="flex items-center gap-2 text-primary-container font-bold hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span> WhatsApp
+                    </a>
+<a class="flex items-center gap-2 text-primary-container font-bold hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span> Email Us
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#001B3D] w-full py-12 px-8 border-t border-white/10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto items-center">
+<div>
+<div class="text-lg font-bold text-white mb-4">Editorial Intelligence</div>
+<p class="font-inter text-sm text-slate-400 max-w-sm">
+                    © 2024 Editorial Intelligence Framework. High-Trust Architecture.
+                </p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+<a class="font-inter text-sm text-slate-400 hover:text-[#5af8fb] opacity-80 hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+<a class="font-inter text-sm text-slate-400 hover:text-[#5af8fb] opacity-80 hover:opacity-100 transition-all" href="#">Terms of Service</a>
+<a class="font-inter text-sm text-slate-400 hover:text-[#5af8fb] opacity-80 hover:opacity-100 transition-all" href="#">Cookie Settings</a>
+<a class="font-inter text-sm text-slate-400 hover:text-[#5af8fb] opacity-80 hover:opacity-100 transition-all" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

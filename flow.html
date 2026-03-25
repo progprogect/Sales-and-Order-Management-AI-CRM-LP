@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editorial CRM | Unified AI &amp; Order Management</title>
+<meta content="Stop losing sales to slow replies. Unified AI CRM and Order Management for high-growth retail." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#006e70",
+              "surface-container-low": "#f3f3f6",
+              "on-secondary-fixed": "#002020",
+              "primary-container": "#001b3d",
+              "on-primary-fixed-variant": "#31476b",
+              "tertiary-fixed-dim": "#c3c7cb",
+              "surface-bright": "#f9f9fc",
+              "surface": "#f9f9fc",
+              "error": "#ba1a1a",
+              "inverse-surface": "#2f3133",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              "surface-dim": "#dadadc",
+              "surface-container-highest": "#e2e2e5",
+              "outline-variant": "#c4c6cf",
+              "secondary-fixed-dim": "#2ddbde",
+              "secondary-fixed": "#5af8fb",
+              "on-primary-fixed": "#001b3d",
+              "on-primary-container": "#6f84ac",
+              "primary-fixed-dim": "#b1c7f2",
+              "secondary": "#00696b",
+              "on-secondary-fixed-variant": "#004f51",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#171c1f",
+              "on-background": "#1a1c1e",
+              "secondary-container": "#56f5f8",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#44474e",
+              "surface-variant": "#e2e2e5",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f0f0f3",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#dfe3e7",
+              "background": "#f9f9fc",
+              "inverse-primary": "#b1c7f2",
+              "on-tertiary-fixed-variant": "#43474b",
+              "on-error-container": "#93000a",
+              "primary": "#000000",
+              "surface-tint": "#495f84",
+              "surface-container-high": "#e8e8ea",
+              "on-surface": "#1a1c1e",
+              "primary-fixed": "#d6e3ff",
+              "outline": "#74777f",
+              "tertiary-container": "#171c1f",
+              "on-tertiary-container": "#808488",
+              "tertiary": "#000000",
+              "surface-container": "#eeeef0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            animation: {
+              'dash': 'dash 3s linear infinite',
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              dash: {
+                'to': { 'stroke-dashoffset': '-20' }
+              }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #00696b;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/70 glass-nav shadow-sm">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+<div class="text-xl font-black text-primary-container tracking-tighter">
+                Editorial CRM
+            </div>
+<div class="hidden md:flex gap-8 items-center font-manrope font-bold tracking-tight text-sm">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#how-it-works">How it works</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#results">Results</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#pricing">Pricing</a>
+</div>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-md font-bold text-sm scale-95 active:scale-90 transition-transform">
+                Book a Demo
+            </button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs tracking-wider uppercase mb-6">
+                    Built for online retail &amp; e-commerce
+                </span>
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold text-primary-container leading-tight tracking-tight mb-6">
+                    Stop losing sales to slow replies and <span class="text-secondary">messy order tracking.</span>
+</h1>
+<p class="text-on-surface-variant text-xl leading-relaxed max-w-2xl mb-10">
+                    AI handles customer conversations 24/7. Your team manages orders and shipping in one place. Replace 3-5 tools with one high-trust architectural workflow.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mb-12">
+<button class="bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-8 py-4 rounded-md font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Book a Free 30-Min Demo
+                    </button>
+<div class="flex items-center gap-3 px-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-sm font-semibold text-primary-container">Works in 5 days</span>
+</div>
+</div>
+<!-- Trust Bar -->
+<div class="pt-8 border-t border-outline-variant/30">
+<p class="text-xs font-bold text-outline uppercase tracking-widest mb-4">Native Integrations</p>
+<div class="flex flex-wrap gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm">Viber/Telegram</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm">WhatsApp/Instagram</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm">DHL/Shipping Experts</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-2xl relative overflow-hidden">
+<img alt="Modern CRM Dashboard" class="rounded-lg w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdjN0VK0Z0BP5gAnmsJGDUr8JaJBv5uFu8slYGqKXrfRwFggOfBlIwh9h8J6YwIJ9Rc1SRclhdAsk6yHb2i1_iOa_lPqxTYkA0ZBQuoHoFbYLasfLRJmKdld4Grw1jLiTgKPnCfQrQ0gAP7ckrrYsEWPFUJIZ1LsnjAMII_V26ZUft0Y3qtyeDAYLJaTNGD3leujH0DSxWR-UnL2pQrb3KzK36HXph2NlbDIJs-vBIchK2MRUVqPKFK87t5woyI6IjosFjn5XpWtQ"/>
+<div class="absolute bottom-8 right-8 bg-primary-container p-6 rounded-lg text-white shadow-2xl animate-pulse">
+<p class="text-xs font-bold text-secondary-fixed mb-1">AI SALES AGENT</p>
+<p class="text-sm">"I've placed your order #8842!"</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW DETAILED HOW IT WORKS SECTION -->
+<section class="py-32 bg-white overflow-hidden" id="how-it-works">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-24">
+<h2 class="font-headline text-5xl font-extrabold text-primary-container mb-4">The Kinetic Flow</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl mx-auto">From first contact to final delivery, witness the automated lifecycle of a high-growth sale.</p>
+</div>
+<!-- 4 Interactive Blocks -->
+<div class="space-y-32">
+<!-- Step 1: Traffic Inflow -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 bg-primary-container rounded-2xl p-8 h-[400px] flex items-center justify-center relative shadow-2xl overflow-hidden">
+<div class="absolute inset-0 opacity-20">
+<div class="h-full w-full bg-[radial-gradient(#5af8fb_1px,transparent_1px)] [background-size:20px_20px]"></div>
+</div>
+<div class="relative z-10 w-full flex flex-col items-center">
+<div class="flex gap-4 mb-8">
+<span class="material-symbols-outlined text-secondary text-5xl animate-bounce">language</span>
+<span class="material-symbols-outlined text-secondary text-5xl animate-bounce [animation-delay:0.2s]">send</span>
+<span class="material-symbols-outlined text-secondary text-5xl animate-bounce [animation-delay:0.4s]">photo_camera</span>
+</div>
+<div class="w-full h-24 relative overflow-hidden">
+<svg class="w-full h-full" viewbox="0 0 400 100">
+<path class="animate-dash" d="M0,50 Q100,20 200,50 T400,50" fill="none" stroke="#5af8fb" stroke-dasharray="5 5" stroke-width="2"></path>
+<circle cx="0" cy="50" fill="#5af8fb" r="4">
+<animate attributename="cx" dur="2s" from="0" repeatcount="indefinite" to="400"></animate>
+</circle>
+<circle cx="0" cy="50" fill="#5af8fb" r="4">
+<animate attributename="cx" begin="0.5s" dur="2s" from="0" repeatcount="indefinite" to="400"></animate>
+</circle>
+<circle cx="0" cy="50" fill="#5af8fb" r="4">
+<animate attributename="cx" begin="1s" dur="2s" from="0" repeatcount="indefinite" to="400"></animate>
+</circle>
+</svg>
+</div>
+<div class="mt-8 px-6 py-3 bg-white/10 rounded-lg backdrop-blur-md border border-white/20">
+<code class="text-secondary-fixed text-sm font-mono tracking-widest">INGESTING_TRAFFIC: 1.2k hits/min</code>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="text-secondary font-black text-6xl mb-4 opacity-20">01</div>
+<h3 class="font-headline text-4xl font-bold text-primary-container mb-6">Launch Your Traffic</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-6">
+                            Whether it's Instagram ads, Telegram broadcasts, or site visitors, we capture every potential lead. Our system acts as a high-speed funnel, organizing chaotic traffic into structured conversational queues.
+                        </p>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-4 py-2 rounded font-bold text-sm">Meta Ads Integration</div>
+<div class="bg-surface-container-high px-4 py-2 rounded font-bold text-sm">Social Webhooks</div>
+</div>
+</div>
+</div>
+<!-- Step 2: AI Interaction -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="text-secondary font-black text-6xl mb-4 opacity-20">02</div>
+<h3 class="font-headline text-4xl font-bold text-primary-container mb-6">AI Sales Concierge</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Meet the agent that never sleeps. It recognizes products from images, checks live stock levels, and handles objections with human-like precision. It qualifies leads so your managers only step in for the final handshake.
+                        </p>
+<div class="hidden animate-in fade-in slide-in-from-top-4 p-4 bg-secondary-container text-on-secondary-container rounded-lg border border-secondary shadow-lg" id="crm-notification">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined font-bold">notifications_active</span>
+<span class="font-bold">NEW LEAD IN CRM: Sarah J. - Product: "Elite Watch"</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 shadow-2xl border border-outline-variant/30 min-h-[450px] flex flex-col">
+<div class="flex justify-between items-center mb-6 pb-4 border-b">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white">AI</div>
+<div>
+<p class="text-sm font-bold">Editorial AI Sales</p>
+<p class="text-xs text-secondary font-semibold">Online &amp; Active</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">more_horiz</span>
+</div>
+<div class="flex-grow space-y-4 mb-6 custom-scrollbar overflow-y-auto px-2">
+<div class="flex justify-start">
+<div class="bg-white p-3 rounded-lg rounded-tl-none max-w-[80%] shadow-sm">
+<img alt="Product" class="rounded mb-2 w-full h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHN2eW040VT_gCKCvPrXwoUdMEKeyqHbbRaebKO4ZFZMKnA2b_nz_vD8DFiGW46QNkfOPLhQJDv7PQ8VQ0ZC3zpyQ4H_fsohy1EVwf3d9SM8LfpDRl_-NZ-MNGLXo9uwpImKQgSUP4t-rINkJNwtIp9KqMCqok-Y1p7EvmP8IhsDjJrIem1ReVpCIGOvIv-ZIj8v5wkXIpDi3lGZCUA5ohSNKtX1gXtNGJTTXCTUrQHML-D9bZ__mvsc2MeUQg3kl1_gUKFckPD8Y"/>
+<p class="text-sm">Hi! Do you have this in stock? And what's the delivery time to London?</p>
+</div>
+</div>
+<div class="hidden flex justify-end" id="ai-reply">
+<div class="bg-primary-container text-white p-3 rounded-lg rounded-tr-none max-w-[80%] shadow-sm">
+<p class="text-sm">Absolutely! We have 4 units left of the Minimalist White Watch. Shipping to London takes 2-3 business days via DHL. Would you like to proceed with an order?</p>
+<button class="mt-3 w-full bg-secondary text-on-secondary py-2 rounded font-bold text-xs uppercase tracking-tighter" onclick="document.getElementById('crm-notification').classList.remove('hidden'); this.innerHTML='Order Created!'">Buy Now</button>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<input class="flex-grow border-none bg-white rounded-md px-4 text-sm focus:ring-2 focus:ring-secondary" id="chat-input" placeholder="Type message..." type="text"/>
+<button class="bg-secondary text-white p-2 rounded-md hover:bg-on-secondary-container transition-colors" onclick="document.getElementById('ai-reply').classList.remove('hidden'); document.getElementById('chat-input').value=''">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Step 3: Precision CRM (Google Sheets) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 bg-white rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden">
+<div class="bg-green-700 text-white px-4 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">table_chart</span>
+<span class="text-xs font-bold uppercase">Editorial Order Manager v4.0</span>
+</div>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+</div>
+</div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left text-xs">
+<thead class="bg-surface-container-high font-bold border-b">
+<tr>
+<th class="p-3">Order ID</th>
+<th class="p-3">Customer</th>
+<th class="p-3">Item</th>
+<th class="p-3">Amount</th>
+<th class="p-3">Status</th>
+<th class="p-3">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b bg-green-50/50">
+<td class="p-3 font-mono">#8843</td>
+<td class="p-3">Sarah J.</td>
+<td class="p-3 italic">White Watch</td>
+<td class="p-3">$129.00</td>
+<td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold" id="sheet-status">PAID</span></td>
+<td class="p-3">
+<button class="bg-primary-container text-white px-3 py-1 rounded font-bold hover:bg-secondary transition-colors" onclick="document.getElementById('sheet-status').innerText='SHIPPING'; this.disabled=true; this.classList.add('opacity-50'); startDhlSim()">Ship Package</button>
+</td>
+</tr>
+<tr class="border-b opacity-50">
+<td class="p-3 font-mono">#8842</td>
+<td class="p-3">Michael R.</td>
+<td class="p-3 italic">Tech Bag</td>
+<td class="p-3">$85.00</td>
+<td class="p-3"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-bold">DELIVERED</span></td>
+<td class="p-3">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="text-secondary font-black text-6xl mb-4 opacity-20">03</div>
+<h3 class="font-headline text-4xl font-bold text-primary-container mb-6">The Familiar Spreadsheet</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-6">
+                            No complex dashboards to learn. Your AI agent pushes data directly into a high-powered Google Sheet. It’s CRM power with spreadsheet simplicity. Status updates, inventory tracking, and sales analytics happen in real-time.
+                        </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 font-bold text-sm text-primary-container">
+<span class="material-symbols-outlined text-secondary">sync</span>
+                                Zero-latency data sync
+                            </li>
+<li class="flex items-center gap-3 font-bold text-sm text-primary-container">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                                Automated financial reporting
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Step 4: Final Mile (DHL) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="text-secondary font-black text-6xl mb-4 opacity-20">04</div>
+<h3 class="font-headline text-4xl font-bold text-primary-container mb-6">Automated Logistics</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            One click creates the DHL label, notifies the courier, and sends a tracking link to the customer. The spreadsheet updates itself once the package is picked up. This is the end of manual data entry.
+                        </p>
+<div class="space-y-2 opacity-60 font-mono text-xs" id="dhl-log">
+<p class="text-outline">&gt; System: Waiting for trigger...</p>
+</div>
+</div>
+<div class="bg-surface-container-highest rounded-2xl p-10 flex flex-col items-center justify-center relative shadow-xl overflow-hidden min-h-[400px]">
+<div class="relative z-10 text-center" id="dhl-visual">
+<div class="w-32 h-32 bg-yellow-400 rounded-lg flex items-center justify-center mb-6 shadow-lg border-4 border-yellow-500 mx-auto">
+<span class="material-symbols-outlined text-black text-6xl">local_shipping</span>
+</div>
+<div class="bg-black text-yellow-400 px-6 py-2 rounded-full font-black text-lg">DHL EXPRESS</div>
+<div class="mt-4 text-primary-container font-bold animate-pulse" id="dhl-status-text">Ready for pickup</div>
+</div>
+<div class="absolute inset-0 bg-secondary/10 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none" id="dhl-overlay">
+<div class="bg-white p-6 rounded-xl shadow-2xl border-2 border-secondary text-center">
+<span class="material-symbols-outlined text-secondary text-5xl mb-2">task_alt</span>
+<p class="font-bold text-primary-container uppercase tracking-widest">Request Confirmed</p>
+<p class="text-xs text-outline mt-1">Courier ID: #DHL-992 arriving in 15m</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Support & Customization -->
+<section class="py-24 bg-primary-container text-white">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline text-4xl font-extrabold mb-6 leading-tight">Custom Setup &amp; Full Technical Support</h2>
+<p class="text-on-primary-container text-xl leading-relaxed mb-8">We don't just hand you software. We build your engine. From training the AI on your unique brand voice to integrating your regional shipping carriers, our engineers handle every line of configuration.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">engineering</span>
+<span class="font-bold text-sm">Personal Engineer</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">support_agent</span>
+<span class="font-bold text-sm">24/7 Priority Line</span>
+</div>
+</div>
+</div>
+<div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Product Data Ingestion</h4>
+<p class="text-on-primary-container text-sm">We map your SKUs, pricing, and variants.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Brand Voice Training</h4>
+<p class="text-on-primary-container text-sm">AI is taught your specific style—casual or formal.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">terminal</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">System Hardening</h4>
+<p class="text-on-primary-container text-sm">Stress-testing and security configuration.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ecosystem Services -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="font-headline text-4xl font-extrabold text-primary-container text-center mb-16">Ecosystem Services</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div class="group bg-surface-container-low p-12 rounded-2xl border border-outline-variant/30 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform">ads_click</span>
+<h3 class="font-headline text-2xl font-bold text-primary-container mb-4">Advertising Management</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Strategic management of Social and Search campaigns (Meta, Google, TikTok). We drive the traffic that feeds your AI agent.</p>
+<a class="inline-flex items-center gap-2 font-bold text-secondary" href="#">
+                        Explore Ad Packages
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="group bg-surface-container-low p-12 rounded-2xl border border-outline-variant/30 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform">code_blocks</span>
+<h3 class="font-headline text-2xl font-bold text-primary-container mb-4">Custom Web Development</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">High-conversion landing pages and bespoke e-shops built for the modern web. Fully integrated with our AI backend.</p>
+<a class="inline-flex items-center gap-2 font-bold text-secondary" href="#">
+                        View Portfolio
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Demo Section -->
+<section class="py-24 bg-secondary-container/20">
+<div class="max-w-4xl mx-auto px-8 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary text-white font-bold text-xs uppercase mb-8">
+<span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
+                Weekly Live Session
+            </div>
+<h2 class="font-headline text-4xl font-extrabold text-primary-container mb-6">Join the Live Sales Webinar</h2>
+<p class="text-on-surface-variant text-xl mb-12">See our system handle a live spike in traffic. Every Friday at 12:00 PM EST. Real questions, real AI, real orders.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-primary-container text-on-primary px-10 py-5 rounded-md font-bold text-xl hover:bg-black transition-all shadow-xl">
+                    Register for Next Friday
+                </button>
+</div>
+<p class="mt-8 text-sm text-outline font-medium italic">Perfect for retail, e-commerce, and high-volume service businesses.</p>
+</div>
+</section>
+<!-- Results Section (Existing) -->
+<section class="py-24 bg-surface-container-low" id="results">
+<div class="max-w-7xl mx-auto px-8 text-center mb-16">
+<h2 class="font-headline text-4xl font-extrabold text-primary-container tracking-tight">What changes on Day 1</h2>
+</div>
+<div class="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<!-- Row 1 -->
+<div class="bg-surface-dim/40 p-6 rounded-lg flex justify-between items-center group">
+<span class="text-on-surface-variant italic">Manager spends 4-8h/day on chats</span>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-secondary p-6 rounded-lg flex justify-between items-center shadow-sm">
+<span class="font-bold text-primary-container">Max 1h/day on qualified leads only</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface-dim/40 p-6 rounded-lg flex justify-between items-center">
+<span class="text-on-surface-variant italic">Generic scripts</span>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-secondary p-6 rounded-lg flex justify-between items-center shadow-sm">
+<span class="font-bold text-primary-container">Personalized replies</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Row 6 -->
+<div class="bg-surface-dim/40 p-6 rounded-lg flex justify-between items-center">
+<span class="text-on-surface-variant italic">15 min to ship</span>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-secondary p-6 rounded-lg flex justify-between items-center shadow-sm">
+<span class="font-bold text-primary-container">2 sec to ship</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</section>
+<!-- Pricing Section (Existing) -->
+<section class="py-24 bg-surface-container-highest/30" id="pricing">
+<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<h2 class="font-headline text-4xl font-extrabold text-primary-container mb-6">Simple, transparent pricing</h2>
+</div>
+<div class="max-w-2xl mx-auto bg-surface-container-lowest rounded-xl p-12 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0">
+<div class="bg-secondary text-white font-bold text-xs px-10 py-2 rotate-45 translate-x-10 translate-y-6">LIFETIME ACCESS</div>
+</div>
+<h3 class="font-headline text-3xl font-bold text-primary-container mb-4">Unified Full System</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">One setup fee. Full AI integration. Unlimited orders. All current features + future updates.</p>
+<div class="mb-10 p-4 rounded-lg bg-secondary-container/10 border border-secondary/20">
+<p class="text-secondary font-bold text-center headline-sm uppercase tracking-tighter">ONE-TIME PAYMENT - NO MONTHLY FEES</p>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check</span>
+<span class="font-medium">Custom AI Training on your data</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check</span>
+<span class="font-medium">Direct Carrier Integrations</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check</span>
+<span class="font-medium">Unified Inbox for 5+ Channels</span>
+</li>
+</ul>
+<button class="w-full bg-primary-container text-on-primary py-5 rounded-md font-bold text-xl hover:bg-black transition-colors">
+                    Get exact pricing on the call
+                </button>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 bg-primary-container text-white text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<img alt="Collaboration Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnSVkSoVa7fnUBFBxGg01zXvpkKQUdCmwYFFovw-h1MWpz4Gia_Yw_QCw6jbsTKHt0IdhDlQ5raNGGkV6vcwBqFt4rRghTTakqc75ZAwvu9b78HLHtBowNqKer2O_YtxFYDDxsGs5RdyBbO7F7WrgMzcdyOthc4vEGlkoZ98WC0n3YoMn01cdpkxUVUF6ayxMvvfsq8T18bjjjpMxqlVpU7rc3bZunmoDxkjHV_74qELGjhzAu0pCPmID0blenidFrfbhW9ECnd80"/>
+</div>
+<div class="max-w-4xl mx-auto px-8 relative z-10">
+<h2 class="font-headline text-4xl md:text-6xl font-extrabold mb-8">Ready to automate your growth?</h2>
+<p class="text-on-primary-container text-xl mb-12 max-w-2xl mx-auto">Whether you're selling physical goods or high-volume services, Editorial CRM scales your operation without scaling your team.</p>
+<div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+<button class="bg-gradient-to-r from-secondary to-secondary-fixed-dim text-white px-10 py-5 rounded-md font-bold text-xl shadow-2xl scale-100 hover:scale-105 active:scale-95 transition-all">
+                    Join the Webinar
+                </button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-md font-bold text-xl hover:bg-white/20 transition-all">
+                    Talk on Telegram
+                </button>
+</div>
+<div class="flex flex-wrap justify-center gap-12 text-sm font-bold opacity-60">
+<a class="hover:text-secondary transition-colors" href="mailto:hello@editorial.crm">Email: hello@editorial.crm</a>
+<a class="hover:text-secondary transition-colors" href="#">WhatsApp Support</a>
+<a class="hover:text-secondary transition-colors" href="#">Privacy &amp; Terms</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary-container border-t border-on-primary-container/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-7xl mx-auto">
+<div class="text-lg font-bold text-surface mb-8 md:mb-0">
+                Editorial Intelligence
+            </div>
+<div class="mt-8 md:mt-0 text-secondary-fixed-dim font-inter text-sm">
+                © 2024 Editorial Intelligence. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        function startDhlSim() {
+            const log = document.getElementById('dhl-log');
+            const visual = document.getElementById('dhl-visual');
+            const overlay = document.getElementById('dhl-overlay');
+            const statusText = document.getElementById('dhl-status-text');
+
+            log.innerHTML += `<p class="text-secondary">&gt; Receiving 'SHIP' trigger...</p>`;
+            
+            setTimeout(() => {
+                log.innerHTML += `<p class="text-secondary">&gt; Generating API request to DHL...</p>`;
+                statusText.innerText = "Generating Label...";
+            }, 1000);
+
+            setTimeout(() => {
+                log.innerHTML += `<p class="text-white font-bold">&gt; LABEL CREATED: #DHL-99283-GB</p>`;
+                statusText.innerText = "Label Ready!";
+            }, 2500);
+
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                statusText.innerText = "Courier Notified";
+            }, 3500);
+        }
+    </script>
+</body></html>
